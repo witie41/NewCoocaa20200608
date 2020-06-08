@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/test.unity
+    guid: 2134bd24be8e9c244b54871697bfcf01
+  - enabled: 0
+    path: Assets/SvrVideo/Scenes/SkyworthVRVideoDemo.unity
+    guid: 1e5e92097d3f2814caa12cbde76d5871
+  m_configObjects: {}

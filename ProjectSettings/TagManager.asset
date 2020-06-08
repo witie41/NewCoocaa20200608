@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Item
+  - Content
+  - Content1
+  - NextPageButton
+  - LastPageButton
+  - PageNums
+  - Hot
+  - FIrst
+  - Sort
+  - Setting
+  - Content2
+  - Content3
+  - Search panel
+  - MsgPanel
+  - TipPanel
+  - 360
+  - Room
+  - SelectPanels
+  - LivingRoomManager
+  - Loading
+  - DanmuCanvas
+  - ChangeModel
+  - LivingRoomModelChange
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

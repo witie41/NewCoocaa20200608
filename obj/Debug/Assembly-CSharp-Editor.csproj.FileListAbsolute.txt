@@ -1,0 +1,2 @@
+D:\unity\unity\Coocaa\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+D:\unity\unity\Coocaa\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache

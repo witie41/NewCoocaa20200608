@@ -1,0 +1,4 @@
+D:\unity\unity\Coocaa\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\unity\unity\Coocaa\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\New (2)\New\Coocaa\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\New (2)\New\Coocaa\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
