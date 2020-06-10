@@ -958,7 +958,6 @@
      <Compile Include="Assets\Scripts\LivingRoom\GiftButton.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\GiftsControl.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\LabelSettings.cs" />
-     <Compile Include="Assets\Scripts\LivingRoom\LivingroomInfo.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\MsgManager.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\NormalPanelControl.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\PanelsControl.cs" />
@@ -967,8 +966,8 @@
      <Compile Include="Assets\Scripts\LivingRoom\RecommendRoomsControl.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\ReportButton.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\ReportCnotrol.cs" />
+     <Compile Include="Assets\Scripts\LivingRoom\RoomButtonControl.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\ShortLivingRoomInfo.cs" />
-     <Compile Include="Assets\Scripts\LivingRoom\SliderRooms.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\UserControl.cs" />
      <Compile Include="Assets\Scripts\LivingRoom\UserShortInfo.cs" />
      <Compile Include="Assets\Scripts\LivingRoomControl.cs" />

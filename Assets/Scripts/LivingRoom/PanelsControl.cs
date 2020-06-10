@@ -25,10 +25,6 @@ public class PanelsControl : MonoBehaviour
         }
     }
 
-    public void OnLoginClick()
-    {
-        
-    }
 
     float Speed = 0.05f;
 
