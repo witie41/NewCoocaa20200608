@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Net.Mime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,15 +14,25 @@ public class VideoShortData : MonoBehaviour
     public Sprite BlueEdge;
     public Sprite YellowEdge;
     public Image image;
+    public Text AuthorName;
+    public Text VideoName;
 
 
-    public void Init(int videoId,int playTime,int likeTime,int collectTime,string duration)
+    public void Init(int videoId, int playTime, int likeTime, int collectTime, string duration, string videoName, string authorName)
     {
         VideoId = videoId;
-        PlayTime.text = playTime.ToString();
-        LikeTime.text = likeTime.ToString();
-        CollectTime.text = collectTime.ToString();
-        Duration.text = duration;
+        if (playTime != -1)
+            PlayTime.text = playTime.ToString();
+        if (likeTime != -1)
+            LikeTime.text = likeTime.ToString();
+        if (collectTime != -1)
+            CollectTime.text = collectTime.ToString();
+        if (duration != null)
+            Duration.text = duration;
+        if (videoName != null)
+            VideoName.text = videoName;
+        if (authorName != null)
+            AuthorName.text = authorName;
     }
 
     public void OnClick()

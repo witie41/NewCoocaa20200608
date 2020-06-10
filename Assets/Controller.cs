@@ -1,4 +1,5 @@
 
+using System.Net.Mime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -102,6 +103,8 @@ public class Controller : MonoBehaviour
 
     public static bool isFlash = false;
 
+    public  int MaxId ;
+
     static GameObject m_select_middle;
     static GameObject m_select_left;
     static GameObject m_select_right;
@@ -145,9 +148,9 @@ public class Controller : MonoBehaviour
     static Panels my_phone_login_panels;
     static Panels my_common_login_panels;
     static Panels my_recommend_panels;
-    GameObject living_room;
+     GameObject living_room ;
     GameObject grand_living_room;
-    GameObject _360_living_room;
+     GameObject _360_living_room ;
     static public bool user_image;
     static public string mobile_number_email;
     static public string user_password;
@@ -171,10 +174,13 @@ public class Controller : MonoBehaviour
     private void Awake()
     { 
         //初始化所有幕布
+        living_room  =  GameObject.Find("Living room");
+       _360_living_room = GameObject.Find("Three hundred and sixty dergee living room");
+       _360_living_room.SetActive(false);
         daylyRank = new GameObject[4];
         monthlyRank = new GameObject[4];
         weeklyRank = new GameObject[4];
-        if (GameObject.Find("Middle canvs") == null)
+       /* if (GameObject.Find("Middle canvs") == null)
         {
             Instantiate(Resources.Load<GameObject>("Canvs/Middle canvs"));
         }
@@ -201,20 +207,22 @@ public class Controller : MonoBehaviour
         if (GameObject.Find("Big middle canvs") == null)
         {
             Instantiate(Resources.Load<GameObject>("Canvs/Big middle canvs"));
-        }
-        GetAllCanvs();
+        }*/
+        //GetAllCanvs();
+        /*
         if (!Handle_panel.ContainsKey(0))
         {
             CreatPanel("Other panel/Icon", 0, Icon_canvs.transform);
             CreatPanel("Other panel/Panel", 1, Menu_canvs.transform);
-        }
+        }*/
 
-        FindPanel();
-        select_panels = new Panels(m_select_left, m_select_middle, m_select_right, m_menu);
+        //FindPanel();
+        //select_panels = new Panels(m_select_left, m_select_middle, m_select_right, m_menu);
         //StartCoroutine(DataClassInterface.IEGetDate<LivingRoomData[]>(AllData.DataString+"/vr/getBroadcastList", new DataClassInterface.OnDataGet<LivingRoomData[]>(LivingDataUp), null));
-        panelComeback.Push(select_panels);
-        StartCoroutine(DataClassInterface.IEGetDate<FirstSelected[]>(AllData.DataString + "/vr/getVrRecommendList", new DataClassInterface.OnDataGet<FirstSelected[]>(GetFirstInfornation), null));
-      // GameObject.Find("Living room").GetComponent<MsgManager>().CurrentId = 
+        //panelComeback.Push(select_panels);
+        //StartCoroutine(DataClassInterface.IEGetDate<FirstSelected[]>(AllData.DataString + "/vr/getVrRecommendList", new DataClassInterface.OnDataGet<FirstSelected[]>(GetFirstInfornation), null));
+         StartCoroutine(DataClassInterface.IEGetDate<LivingRoomData[]>(AllData.DataString + "/vr/getBroadcastList?pageId=1" , new DataClassInterface.OnDataGet<LivingRoomData[]>(GetMaxId), null));
+       
 
     }
 
@@ -284,7 +292,7 @@ public class Controller : MonoBehaviour
 
             Debug.Log("账号：" + mobile_number_email + "密码：" + user_password);
             StartCoroutine(DataClassInterface.IEPostData<UserToken>(AllData.DataString + "/coocaa/api/vrLogin?mobile_email=" + mobile_number_email + "&password=" + user_password, new DataClassInterface.OnDataGet<UserToken>(GetUserToken), myForm, null));          
-            Icon_canvs.transform.GetChild(0).GetChild(5).GetChild(1).GetComponent<Text>().text = "用户";
+            //Icon_canvs.transform.GetChild(0).GetChild(5).GetChild(1).GetComponent<Text>().text = "用户";
             user_token_Get = false;
         }
 
@@ -1394,22 +1402,28 @@ public class Controller : MonoBehaviour
 
     public void EnterLivingRoom()
     {
-        Debug.Log("事件响应");
-        DisableHomeCanvs();
-        if (GameObject.Find("Living room(Clone)") != null)
-            GameObject.Find("Living room(Clone)").SetActive(false);
-        living_room = CreatLivingRoom("LivingRoom/Living room folder/Living room");
-        if (living_room == null)
-            Debug.Log("未初始化");
+        if(living_room.activeInHierarchy == false)
+        {
+            living_room.SetActive(true);
+        } 
+        if(_360_living_room.activeInHierarchy == true)
+        {
+            _360_living_room.SetActive(false);
+        }
+
         panelComeback.Push(living_room);
     }
     public void Enter360DegreeVideos()
     {
 
-        DisableHomeCanvs();
-        if (GameObject.Find("Three hundred and sixty dergee living room(Clone)") != null)
-            GameObject.Find("Three hundred and sixty dergee living room(Clone)").SetActive(false);
-        _360_living_room = CreatLivingRoom("LivingRoom/360 degree video folder/Three hundred and sixty dergee living room");
+        if(_360_living_room.activeInHierarchy == false)
+        {
+            _360_living_room.SetActive(true);
+        }
+        if(living_room.activeInHierarchy == true)
+        {
+            living_room.SetActive(false);
+        }
         panelComeback.Push(_360_living_room);
     }
     public void EnterGrandScreenCinema()
@@ -1469,8 +1483,8 @@ public class Controller : MonoBehaviour
     private void Pop()
     {
         Debug.Log("出栈!");
-        ALLFalse();
-        AllEnbaleCanvs();
+        //ALLFalse();
+        //AllEnbaleCanvs();
         if (panelComeback.Count > 1)
         {
             if (panelComeback.Peek().GetType() == gameObject.GetType())
@@ -1516,9 +1530,8 @@ public class Controller : MonoBehaviour
     {
         if (GameObject.Find("Quiting(Clone)") == false)
         {
-            Debug.Log(panelComeback.Count);
-            Debug.Log("退出");
-            CreatPanel("Middle panel/Quiting", 50, Middle_canvs.transform);
+            Big_middle_canvs = GameObject.Find("Big middle canvs");
+            CreatPanel("Middle panel/Quiting", 50, Big_middle_canvs.transform);
         }
     }
     public void ExitTheVRApp()
@@ -1538,9 +1551,7 @@ public class Controller : MonoBehaviour
         AllData.token = user.token;
 
         StartCoroutine(DataClassInterface.IEGetDate<UserDataFind>(AllData.DataString+"/coocaa/api/getUserByToken?token=" + user.token, new DataClassInterface.OnDataGet<UserDataFind>(GetUserFromToken), null));
-
-
-
+        
     }
     private void RegisterGetToken(UserToken user, GameObject[] nothing, string no)
     {
@@ -2120,10 +2131,10 @@ public class Controller : MonoBehaviour
     public void GetUserFromToken(UserDataFind data, GameObject[] gbj, string no)
     {
         //用户的所有信息
-
+        GameObject target =  GameObject.FindWithTag("ButtonControl") ;  
         AllData.userId = data.id;
         AllData.UserName = data.name;
-      
+        target.GetComponent<UserControl>().OnClick();
     }
     public void GetFirstInfornation(FirstSelected[] datas, GameObject[] nothing, string no)//获取首页信息
     {
@@ -2366,6 +2377,42 @@ public class Controller : MonoBehaviour
     public void ShowOtherPeople()
     {
         InOtherPerson = true;
+    }
+
+    private void GetMaxId(LivingRoomData[]datas,GameObject[]gbj,string str)
+    {
+        
+        foreach(LivingRoomData data in datas)
+        {
+            int max = 0;
+           
+            if(Int32.Parse(data.score)>=max)
+            {
+                max = Int32.Parse(data.score);
+                MaxId = data.id;
+            
+            }
+        }
+         Debug.Log("当前房间id=="+MaxId);
+         if(MaxId == 0)//等于0说明没有直播了直接跳转到巨幕影院.
+         {
+             Debug.Log("这里动了????");
+             living_room.SetActive(false);
+             _360_living_room.SetActive(true);       
+             StartCoroutine(DataClassInterface.IEGetDate<VideoData[]>(AllData.DataString + "/vr/getVideoList?pageId=1" , new DataClassInterface.OnDataGet<VideoData[]>(GotoVideo), null));
+             
+         }
+         else
+        living_room.GetComponentInChildren<MsgManager>().CurrentId = MaxId;
+    }
+
+    void GotoVideo(VideoData[] datas ,GameObject[] room,string str)
+    {
+        foreach(VideoData data in datas)
+        {
+            _360_living_room.transform.GetComponentInChildren<VideoManager>().Id = data.workId;
+            break;
+        }
     }
 }
 

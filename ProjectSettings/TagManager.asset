@@ -27,6 +27,12 @@ TagManager:
   - DanmuCanvas
   - ChangeModel
   - LivingRoomModelChange
+  - 360tag
+  - GrandContent
+  - LivingContent
+  - 360Content
+  - ButtonControl
+  - User
   layers:
   - Default
   - TransparentFX

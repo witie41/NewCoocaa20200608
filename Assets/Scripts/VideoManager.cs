@@ -226,7 +226,7 @@ public class VideoManager : MonoBehaviour
             else
             {
                 //其余信息
-                a.GetComponent<VideoShortData>().Init(data[i].workId,data[i].playNum,data[i].likeNum, data[i].collectNum,DataClassInterface.SecondsToTime(data[i].duration));
+                a.GetComponent<VideoShortData>().Init(data[i].workId,data[i].playNum,data[i].likeNum, data[i].collectNum,DataClassInterface.SecondsToTime(data[i].duration),null,null);
                 StartCoroutine(DataClassInterface.IEGetSprite(data[i].cover, (Sprite photo, GameObject go, string str) => { a.GetComponent<Image>().sprite = photo; }, null));
                 i++;
             }
@@ -254,7 +254,7 @@ public class VideoManager : MonoBehaviour
             else
             {
                 //其余信息
-                a.GetComponent<VideoShortData>().Init(data[i].workId, data[i].playNum, data[i].likeNum, data[i].collectNum, DataClassInterface.SecondsToTime(data[i].duration));
+                a.GetComponent<VideoShortData>().Init(data[i].workId, data[i].playNum, data[i].likeNum, data[i].collectNum, DataClassInterface.SecondsToTime(data[i].duration),null,null);
                 StartCoroutine(DataClassInterface.IEGetSprite(data[i].cover, (Sprite photo, GameObject go, string str) => { a.GetComponent<Image>().sprite = photo; }, null));
                 i++;
             }

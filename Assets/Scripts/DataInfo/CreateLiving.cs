@@ -64,6 +64,7 @@ public class CreateLiving : MonoBehaviour
 
         RoomPrefab = new Dictionary<int, GameObject>();
 
+      /*
         if (Forward_button == null)
         {
             if (this.transform.GetChild(2) != null)
@@ -73,7 +74,7 @@ public class CreateLiving : MonoBehaviour
         {
             if (this.transform.GetChild(1) != null)
                 Backoff_button = this.transform.GetChild(1).GetComponent<Button>();
-        }
+        }*/
         if (Viewport == null)
         {
             Viewport = this.transform.GetChild(0).gameObject;
@@ -90,8 +91,8 @@ public class CreateLiving : MonoBehaviour
         //  SaveInformation(Real_numbers);
         //CreatRoomGameobject(Real_numbers);
         //FlashMyRoom(0, Real_numbers, MaxInView);
-        Forward_button.onClick.AddListener(delegate () { this.ClickButtonForward(); });
-        Backoff_button.onClick.AddListener(delegate () { this.ClickButtonBackWard(); });
+        //Forward_button.onClick.AddListener(delegate () { this.ClickButtonForward(); });
+       // Backoff_button.onClick.AddListener(delegate () { this.ClickButtonBackWard(); });
       
     }
 

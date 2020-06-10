@@ -1,17 +1,16 @@
 Android
 PlayerPath?
-C:/Users/HP/Desktop/Coocaa20200505/Coocaa20200505/NewCoocaa20200424/2.apk
+D:/1442348098/FileRecv/NewCoocaa20200424/test4.apk
 SceneListBegin?
 Assets/test.unity
 SceneListEnd?
-0d06d7f317344456333f4153df921601 Assembly-CSharp.dll:.VideoShortData
+43887800aa4417534000bde91f8b4bd1 Assembly-CSharp.dll:.VideoShortData
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SliderRooms
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:BestHTTP.Examples.LargeFileDownloadSample
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 f177f23b109d6ac24444ebc63c4c4960 Assembly-CSharp.dll:.GvrDropdown
 8f9981ae062e1a02c7f0bcdf63e95233 Assembly-CSharp.dll:GoogleVR.HelloVR.HeadsetDemoManager
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Assets.GifAssets.PowerGif.AnimatedImage
 77c21079ace8d76ce6e941d3dabbfe6e Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
-334817b9174791213a3d7b79aba88964 Assembly-CSharp.dll:Assets.GifAssets.PowerGif.Examples.Scripts.EncodeExample
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -26,7 +25,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.P
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 1162bc2ac2b5d44c6e26742de52a450e Assembly-CSharp.dll:.Button_Panel
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DataDownload
-f652a53bef7340fab50e39719fef1667 Assembly-CSharp.dll:.Controller
+a886498c7cfdea17433c04f1f7198d07 Assembly-CSharp.dll:.Controller
 08629ddbd25ed3af6ae81bb50bfe3b21 Assembly-CSharp.dll:.StereoRenderEffect
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 59597b2c063b83ea2bebb9dd60582dbc Assembly-CSharp.dll:.CreateLiving
@@ -110,6 +109,7 @@ dc51a9ca14044f70cc06ae9c03a11799 Assembly-CSharp.dll:.RankManager
 c9d7f0d81fdae2d877bb1152cc49f7a4 Assembly-CSharp.dll:ProBuilder2.Examples.IcoBumpin
 b998a75c7c0c6bb3d6b09ebc9084ec0d Assembly-CSharp.dll:IVRCommon.Keyboard.Widet.KeySymbolButton
 5d46189bfca968b9b26fd60c37765c3f Assembly-CSharp.dll:.GvrArmModel
+42849670746b8e56a857d7aae66d63be Assembly-CSharp.dll:.ButtonControl
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DataClassInterface
 1bb6b7c659ac722a4b1d683587b8475b Assembly-CSharp.dll:GoogleVR.Demos.DemoInputManager
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -147,7 +147,6 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 ed916f285d5522ec5ceb6eccef8d0072 Assembly-CSharp.dll:GoogleVR.VideoDemo.SwitchVideos
 11182ae33aeebaa701c6f03cb7f19976 Assembly-CSharp.dll:.GvrKeyboard
 e4f33c92e41fff3818d2560fbf266856 Assembly-CSharp.dll:.VideoManager
-fd71524beafb2ad693bfc00f6f879f48 Assembly-CSharp.dll:Assets.GifAssets.PowerGif.Examples.Scripts.DecodeExample
 94852a5fe19c336b2b9939224323f421 Assembly-CSharp.dll:.ChangeModel
 287963f788124d0954a11e14c88fe403 Assembly-CSharp.dll:GoogleVR.VideoDemo.ToggleAction
 0bc93245a4997dd0dc2863e4dd667389 Assembly-CSharp.dll:IVRCommon.Keyboard.Action.DigitBoardAction
@@ -156,6 +155,7 @@ c4a3741ad39ad91a7e39385ec647e9b4 Assembly-CSharp.dll:.SvrVideoControlPanel
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 9c5049a5be03714242c777afa18e44bf Assembly-CSharp.dll:GoogleVR.VideoDemo.PositionSwapper
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
+2a7f35c7e04eb3d8ab729fcdfab36fef Assembly-CSharp.dll:.ShortLivingRoomInfo
 5025e40a187ef0ae5c9b908e8b121843 Assembly-CSharp.dll:.GvrLaserPointer
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.AuthenticationSample
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DemoHubSample
@@ -167,7 +167,6 @@ df14204c8eef5efd8b1a9daa6e0a5862 Assembly-CSharp.dll:.GvrAllEventsTrigger
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:ProBuilder2.Examples.HueCube
 2ecdbe75f54c8965e9d317f6c9a2e0e3 Assembly-CSharp.dll:.GiftButton
 79ad033a1a6eaf3156e7fdfff181faee Assembly-CSharp.dll:.ReportButton
-af9ec79776f8ce5a23c2b547356ef9ff Assembly-CSharp.dll:Assets.GifAssets.PowerGif.Examples.Scripts.PerformanceExample
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.GvrPointerManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 196567960fdeda3d1e8a641229f929ec Assembly-CSharp.dll:.VolumeButton
@@ -263,12 +262,13 @@ fc4056a998781784b366970aa5bdea8c svr-private-Editor.dll:svr_private_Editor.Gvr.E
 4b14a5b5ca9d21a375985efd1fdf8cec DOTween.dll:DG.Tweening.Core.DOTweenSettings
 c80d3238226b1d162e3ff2069e0972ed Assembly-CSharp.dll:ProBuilder2.Examples.CameraControls
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-178d8a2953609a3c7ef310a7c1c081b5 Assembly-CSharp.dll:.MsgManager
+e5c0de510f5ae3d87d08cf5ba6017102 Assembly-CSharp.dll:.MsgManager
 17ba55377a0f3a38793983b70337fa03 Assembly-CSharp.dll:.ShotKeyBoard
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PanelsControl
 89c433fef753b02de32958d7fe54cc06 Assembly-CSharp.dll:.GvrLaserVisual
 e71cfde129bae4ea8078c5465c0ea592 Assembly-CSharp.dll:.ReportCnotrol
 776f79eb06ae67dc120ef7d10696a34c Assembly-CSharp.dll:.GvrControllerVisual
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.UserControl
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:GoogleVR.VideoDemo.ScrubberEvents
 453c503c63c29f71f2c5e0f2f848b0dd Assembly-CSharp.dll:.DanmuControl
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SampleSelector
@@ -295,6 +295,7 @@ df434544c9f7b33d1cc7e635b180d279 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SVR_Model
 4a862b479b8b0c53aeeed3defb1c02d4 Assembly-CSharp.dll:.StereoController
+1aa10fcffeb7855f442a942be5e70b32 Assembly-CSharp.dll:.RecommendRoomsControl
 f0077b931a26a7eeaf5e245c7ef51ec4 Assembly-CSharp.dll:.GvrPointerInputModule
 7a6837fe2e1bc65ba24bcd2a74cc367f Assembly-CSharp.dll:.GvrController
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LabelSettings
