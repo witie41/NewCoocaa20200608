@@ -8,34 +8,25 @@ public class Button_Panel : MonoBehaviour
     public Transform Patner;
     private float Speed=0.05f;
 
+    private PanelsControl panelsControl;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+    
+        panelsControl=GetComponentInParent<PanelsControl>();
+    }
 
     public void OnClick()
     {
-        GetComponentInParent<PanelsControl>().CurrentPanel = Patner;
-    }
-
-    IEnumerator IESmaller(Transform target)
-    {
-        while(target.localScale.x> 0)
+        if(panelsControl.CurrentPanel==Patner)
         {
-            target.localScale -= Vector3.one * Speed;
-            if(target.localScale.x<= Speed)
-            {
-                target.localScale = Vector3.zero;
-                break;
-            }
-            yield return null;
+            panelsControl.CurrentPanel=null;
+            return;
         }
-        yield break;
-    }
-    IEnumerator IEBigger(Transform target)
-    {
-        while (target.localScale.x <1)
-        {
-            target.localScale += Vector3.one * Speed;
-            yield return null;
-        }
-        yield break;
+        panelsControl.CurrentPanel = Patner;
     }
 
 

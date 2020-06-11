@@ -85,18 +85,18 @@ public class MsgManager: MonoBehaviour
        
 
         //关注房间
-        foreach (Transform Room in RecommenRoomContent)
-        {
-            Destroy(Room.gameObject);
-        }
-        DataClassInterface.OnDataGet<LivingRoomData[]> OnRoomListGet= OnRoomListGetFunction;
-        StartCoroutine(DataClassInterface.IEGetDate<LivingRoomData[]>(AllData.DataString+"/vr/getBroadcastList", OnRoomListGet,null));
+        // foreach (Transform Room in RecommenRoomContent)
+        // {
+        //     Destroy(Room.gameObject);
+        // }
+        // DataClassInterface.OnDataGet<LivingRoomData[]> OnRoomListGet= OnRoomListGetFunction;
+        // StartCoroutine(DataClassInterface.IEGetDate<LivingRoomData[]>(AllData.DataString+"/vr/getBroadcastList", OnRoomListGet,null));
 
-        DataClassInterface.OnDataGet<DanmuData[]> OnDanmuListGet = OnDanmuListGetFunction;
-        StartCoroutine(DataClassInterface.IEGetDate<DanmuData[]>(AllData.DataString+"/msg/getBulletChatList", OnDanmuListGet, null));
+        // DataClassInterface.OnDataGet<DanmuData[]> OnDanmuListGet = OnDanmuListGetFunction;
+        // StartCoroutine(DataClassInterface.IEGetDate<DanmuData[]>(AllData.DataString+"/msg/getBulletChatList", OnDanmuListGet, null));
 
-        DataClassInterface.OnDataGet<SubscribeRoom[]> IfSubscribe = IfSubscribeFuncotion;
-        StartCoroutine(DataClassInterface.IEGetDate<SubscribeRoom[]>(AllData.DataString+ "/broadcast/getAttentionBroadcastList?pageId=1&pageSize=100&userId=" + AllData.userId.ToString(), IfSubscribe, null));
+        // DataClassInterface.OnDataGet<SubscribeRoom[]> IfSubscribe = IfSubscribeFuncotion;
+        // StartCoroutine(DataClassInterface.IEGetDate<SubscribeRoom[]>(AllData.DataString+ "/broadcast/getAttentionBroadcastList?pageId=1&pageSize=100&userId=" + AllData.userId.ToString(), IfSubscribe, null));
     }
 
     //获取当前房间是否被订阅

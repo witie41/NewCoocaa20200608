@@ -11,22 +11,6 @@ public class VolumeButton : MonoBehaviour
     
     public void OnClick()
     {
-        if (GetComponentInParent<PanelsControl>().CurrentPanel == VolumeSlider)
-            Mute();
-        GetComponentInParent<PanelsControl>().CurrentPanel = VolumeSlider;
-    }
-
-
-    public void Mute()
-    {
-        if (slider.value != 0)
-        {
-            CurrentVolume = slider.value;
-            slider.value = 0;
-        }
-        else
-        {
-            slider.value = CurrentVolume;
-        }
+        VolumeSlider.gameObject.SetActive(!VolumeSlider.gameObject.activeSelf);
     }
 }

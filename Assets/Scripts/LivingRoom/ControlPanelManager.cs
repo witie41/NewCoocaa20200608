@@ -52,7 +52,7 @@ public class ControlPanelManager : MonoBehaviour
     void Update()
     {
         //点击屏幕唤醒/隐藏菜单
-        if( GvrControllerInput.ClickButtonDown||Input.GetMouseButtonDown(0))
+        if( GvrControllerInput.ClickButtonDown||Input.GetMouseButtonUp(0))
         {
             if(EventSystem.current.IsPointerOverGameObject() == false)
              CurrentState = !CurrentState;
@@ -67,7 +67,7 @@ public class ControlPanelManager : MonoBehaviour
         {
             //ControlPanel.transform.localScale = Vector3.zero;
             Panels.transform.localScale = Vector3.zero;
-            Panels.GetComponent<PanelsControl>().CurrentPanel = null;
+            Panels.GetComponentInChildren<PanelsControl>().CurrentPanel = null;
             //ChangePlayModelButton.transform.localScale = Vector3.zero;
         }
 
@@ -75,6 +75,7 @@ public class ControlPanelManager : MonoBehaviour
         {
             //ControlPanel.transform.localScale = Vector3.one;
             Panels.transform.position = player.position + player.forward * 30 ;
+            Panels.GetComponentInChildren<PanelsControl>().CurrentPanel = Panels.GetComponentInChildren<PanelsControl>().RoomInfoPanel;
            // Debug.Log(player.position+""+ Panels.transform.position);
             Panels.transform.LookAt(Panels.transform.position+ Panels.transform.position-player.position);
             Panels.transform.localScale = Vector3.one;

@@ -117,6 +117,12 @@ public class ChangeModel : MonoBehaviour
             ControlPanel = transform.parent.GetComponent<SvrVideoControlPanel>();
     }
 
+    public void FlashVideo()
+    {
+        OnDisable();
+        OnEnable();
+    }
+
     private void OnDisable()
     {
         if (CurrentPlayer != null)

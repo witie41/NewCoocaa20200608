@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PanelsControl : MonoBehaviour
 {
+    public Transform RoomInfoPanel;
     private Transform currentPanel;
     public Transform CurrentPanel
     {
@@ -18,6 +19,11 @@ public class PanelsControl : MonoBehaviour
             currentPanel = value;
             if (currentPanel != null)
                 StartCoroutine(IEBigger(currentPanel));
+            else
+            {   
+                currentPanel=RoomInfoPanel;
+                StartCoroutine(IEBigger(currentPanel));
+            }
         }
         get
         {
@@ -25,6 +31,13 @@ public class PanelsControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        CurrentPanel = RoomInfoPanel;
+    }
 
     float Speed = 0.05f;
 
@@ -44,6 +57,7 @@ public class PanelsControl : MonoBehaviour
     }
     IEnumerator IEBigger(Transform target)
     {
+        Debug.Log(target);
         while (target.localScale.x < 1)
         {
             target.localScale += Vector3.one * Speed;
