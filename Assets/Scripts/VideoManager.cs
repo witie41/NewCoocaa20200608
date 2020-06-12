@@ -24,73 +24,6 @@ public class VideoManager : MonoBehaviour
         }
     }
 
-    //推荐视频ID
-    private int recommendId;
-    public int RecommendId
-    {
-        get
-        {
-            return recommendId;
-        }
-        set
-        {
-            recommendId = value;
-            StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString+"/vr/getVrRecommendVideoById?contentId=" + RecommendId.ToString(), new DataClassInterface.OnDataGet<RecommendVideo>(OnRecommendVideoDataGetFunction), null));
-        }
-    }
-
-    private void OnRecommendVideoDataGetFunction(RecommendVideo data, GameObject[] gos, string nos)
-    {
-        if (data.sourceName == null)
-            title.text = "未知";
-        else
-            title.text = data.sourceName;
-
-        pubishTime.text = "未知";
-
-
-        if (data.videoTag == null)
-            sort.text = "未知";
-        else
-            sort.text = data.videoTag;
-
-        if (data.source == null)
-            Introduction.text = "未知";
-        else
-            Introduction.text = "视频源："+data.source;
-
-        //更改视频地址
-        foreach (Transform player in players.transform)
-        {
-            if (player.GetComponent<SvrVideoPlayerDemo>() != null)
-                player.GetComponent<SvrVideoPlayerDemo>().VideoUrls[0] = data.url;
-        }
-        ChangeModel changemodel = players.GetComponentInChildren<ChangeModel>();
-        switch (data.contentType)
-        {
-            case "video":
-                changemodel.RecommenedPlayer = changemodel.Player2D;
-                break;
-
-            case "video_vr":
-                changemodel.RecommenedPlayer = changemodel.Player360;
-                break;
-
-            default:
-                changemodel.RecommenedPlayer = changemodel.Player2D;
-                break;
-        }
-        changemodel.CurrentPlayer = changemodel.RecommenedPlayer;
-        Transform temp = AuthorPhoto.transform;
-        while (temp.name != "Panel2")
-            temp = temp.parent;
-        temp.localScale = Vector3.zero;
-        //推荐视频
-        StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString+"/vr/getVideoList?pageId=1&pageSize=20", new DataClassInterface.OnDataGet<VideoData[]>(OnRecommendVideoGet), null));
-    }
-
-
-
     //测试
     GameObject a1;
     int time = 0;
@@ -150,7 +83,7 @@ public class VideoManager : MonoBehaviour
             if (player.GetComponent<SvrVideoPlayerDemo>() != null)
                 player.GetComponent<SvrVideoPlayerDemo>().VideoUrls[0] = data.path;
         }
-        ChangeModel changemodel = players.GetComponentInChildren<ChangeModel>();
+        ChangeModel changemodel = GameObject.FindGameObjectWithTag("ChangeModel").GetComponent<ChangeModel>();
         //全景
         if (data.workType == 0)
         {
@@ -199,92 +132,7 @@ public class VideoManager : MonoBehaviour
         //GameObject.FindGameObjectWithTag("Loading").GetComponentInChildren<Text>().text += " VideoManagerOver";
         //作者信息
         StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString+"/vr/getUserById?id="+userId.ToString(), new DataClassInterface.OnDataGet<UserData>(OnAuthorDataGet), null));
-        //TA的视频信息
-        StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString+"/vr/getVideoList?pageId=1&pageSize=20&userId="+userId.ToString(), new DataClassInterface.OnDataGet<VideoData[]>(OnVideosGet), null));
-        //推荐视频
-        StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString+"/vr/getVideoList?pageId=1&pageSize=20", new DataClassInterface.OnDataGet<VideoData[]>(OnRecommendVideoGet), null));
     }
-
-    //推荐视频
-    void OnRecommendVideoGet(VideoData[] data, GameObject[] gos, string nos)
-    {
-        int i = 0;
-        foreach(Transform a in Content)
-        {
-            if (i > data.Length - 1)
-            {
-                Destroy(a.gameObject);
-                continue;
-            }
-            if (data[i].workId == id)
-                i++;
-            if (i>data.Length-1)  
-            {
-                Destroy(a.gameObject);
-                continue;
-            }
-            else
-            {
-                //其余信息
-                a.GetComponent<VideoShortData>().Init(data[i].workId,data[i].playNum,data[i].likeNum, data[i].collectNum,DataClassInterface.SecondsToTime(data[i].duration),null,null);
-                StartCoroutine(DataClassInterface.IEGetSprite(data[i].cover, (Sprite photo, GameObject go, string str) => { a.GetComponent<Image>().sprite = photo; }, null));
-                i++;
-            }
-        }
-    }
-
-    //TA的视频信息
-    void OnVideosGet(VideoData[] data, GameObject[] gos, string nos)
-    {
-        int i = 0;
-        foreach (Transform a in Videos)
-        {
-            if (i > data.Length - 1)
-            {
-                Destroy(a.gameObject);
-                continue;
-            }
-            if (data[i].workId == id)
-                i++;
-            if (i > data.Length - 1)
-            {
-                Destroy(a.gameObject);
-                continue;
-            }
-            else
-            {
-                //其余信息
-                a.GetComponent<VideoShortData>().Init(data[i].workId, data[i].playNum, data[i].likeNum, data[i].collectNum, DataClassInterface.SecondsToTime(data[i].duration),null,null);
-                StartCoroutine(DataClassInterface.IEGetSprite(data[i].cover, (Sprite photo, GameObject go, string str) => { a.GetComponent<Image>().sprite = photo; }, null));
-                i++;
-            }
-        }
-            //int i = 0;
-            //foreach(Transform video in Videos)
-            //{
-            //    //超过总数
-            //    if(i>=data.Length)
-            //    {
-            //        Destroy(video.gameObject);
-            //        continue;
-            //    }
-            //    else
-            //    {
-            //        if(data[i].workId==Id)
-            //        {
-            //            i++;
-            //            //超过总数
-            //            if (i >= data.Length)
-            //            {
-            //                Destroy(video.gameObject);
-            //                continue;
-            //            }
-            //        }
-            //        video.GetComponent<VideoShortData>().Init(data[i].workId, data[i].playNum, data[i].likeNum, data[i].collectNum, DataClassInterface.SecondsToTime(data[i].duration));
-            //        DataClassInterface.IEGetSprite(data[i].cover, (Sprite sprite, GameObject go, string str) => { video.GetComponent<Image>().sprite = sprite; }, null);
-            //    }
-            //}
-        }
 
     //作者信息
     void OnAuthorDataGet(UserData data,GameObject[] gos,string nos)

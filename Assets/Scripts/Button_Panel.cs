@@ -15,7 +15,6 @@ public class Button_Panel : MonoBehaviour
     /// </summary>
     void Awake()
     {
-    
         panelsControl=GetComponentInParent<PanelsControl>();
     }
 

@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -111,8 +111,8 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 498}
-  m_MaxSize: {x: 14002, y: 14048}
+  m_MinSize: {x: 683, y: 498}
+  m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
   controlID: 68
 --- !u!114 &6
@@ -136,7 +136,7 @@ MonoBehaviour:
     y: 0
     width: 1520
     height: 947
-  m_MinSize: {x: 404, y: 498}
+  m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
   controlID: 69
@@ -161,8 +161,8 @@ MonoBehaviour:
     y: 0
     width: 1520
     height: 556
-  m_MinSize: {x: 404, y: 224}
-  m_MaxSize: {x: 8004, y: 4024}
+  m_MinSize: {x: 406, y: 224}
+  m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
   controlID: 70
 --- !u!114 &8
@@ -210,8 +210,8 @@ MonoBehaviour:
     y: 0
     width: 1094
     height: 556
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 224}
+  m_MaxSize: {x: 4004, y: 4024}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -265,8 +265,8 @@ MonoBehaviour:
     y: 0
     width: 400
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 74}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -299,14 +299,14 @@ MonoBehaviour:
     height: 536
   m_PersistentViewDataDictionary: {fileID: 0}
   m_WindowGUID: 4965040292205c64c8dd4068a4f661a8
-  m_SceneLighting: 0
+  m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.8664432, y: -2.536026, z: -473.9712}
+    m_Target: {x: 2.088353, y: 3.121439, z: -482.824}
     speed: 2
-    m_Value: {x: 1.8664432, y: -2.536026, z: -473.9712}
+    m_Value: {x: 2.088353, y: 3.121439, z: -482.824}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
-    showSkybox: 0
+    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -334,19 +334,19 @@ MonoBehaviour:
       speed: 2
       m_Value: 1
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: -1}
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: -1}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 35.18257
+    m_Target: 7.5497847
     speed: 2
-    m_Value: 35.18257
+    m_Value: 7.5497847
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: -0.0632058, y: 0.04399443, z: -0.002788999, w: -0.9970265}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -383,7 +383,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: be7f000068860000908700000e890000dc8a0000028b0000ec8e0000
+      m_ExpandedIDs: 1cd7ffffeed7ffff34d8ffff48d8ffffbafaffffcafaffffecfafffffefaffff08fbffffc6fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: Living room
@@ -466,7 +466,7 @@ MonoBehaviour:
       y: 17
       width: 1090
       height: 519
-    m_Scale: {x: 0.4244045, y: 0.42440453}
+    m_Scale: {x: 0.7616816, y: 0.7616817}
     m_Translation: {x: 545, y: 259.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -474,10 +474,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1284.1522
-      y: -611.44495
-      width: 2568.3044
-      height: 1222.8899
+      x: -715.52203
+      y: -340.6935
+      width: 1431.0441
+      height: 681.387
     m_MinimalGUI: 1
   m_defaultScale: 0.13515624
   m_TargetTexture: {fileID: 0}
@@ -551,20 +551,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/LivingRoom
+    - Assets/Resources/LivingRoom/360 degree video folder
   m_ViewMode: 1
   m_StartGridSize: 61
   m_LastFolders:
-  - Assets/Scripts/LivingRoom
+  - Assets/Resources/LivingRoom/360 degree video folder
   m_LastFoldersGridSize: 61
   m_LastProjectPath: D:\1442348098\FileRecv\NewCoocaa20200424
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 194}
-    m_SelectedIDs: 64320000
-    m_LastClickedID: 12900
-    m_ExpandedIDs: 00000000fa3000004e3100005031000090320000003600004e360000a4360000e4370000bc3800003a3c0000563c0000983d0000ea3d0000ce3e0000d83e0000243f0000f67e0000f87e0000fa7e0000fc7e0000
+    scrollPos: {x: 0, y: 186}
+    m_SelectedIDs: 943d0000
+    m_LastClickedID: 15764
+    m_ExpandedIDs: 00000000fa3000004e3100005031000090320000fa350000483600009e360000fa360000de370000b6380000343c0000503c0000923d0000e43d0000c83e0000d23e00001e3f0000a67f0000a87f0000aa7f0000ac7f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -592,7 +592,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fa3000004e3100005031000090320000003600004e360000a4360000e4370000bc3800003a3c0000563c0000983d0000ea3d0000ce3e0000d83e0000243f0000f67e0000f87e0000fa7e0000fc7e0000
+    m_ExpandedIDs: 00000000fa3000004e3100005031000090320000fa350000483600009e360000fa360000de370000b6380000343c0000503c0000923d0000e43d0000c83e0000d23e00001e3f0000a67f0000a87f0000aa7f0000ac7f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -620,7 +620,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000142d0000d8320000dc32000000000000183d0000
+    m_ExpandedInstanceIDs: c6230000142d0000d8320000dc320000183d00007036000000000000103f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

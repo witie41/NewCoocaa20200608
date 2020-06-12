@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ChangeModel : MonoBehaviour
 {
     public SvrVideoControlPanel ControlPanel;
-    public Text CurrentPlayerName;
     public Slider VolumeSlider;
     [Header("播放器列表")]
     public GameObject Player2D;

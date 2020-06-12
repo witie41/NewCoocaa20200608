@@ -22,6 +22,7 @@ public class SvrPlayProgressBarPanel : MonoBehaviour
     private bool IsVoluntary;
     private long TotalTime;
 
+    private float DisplayTime = 3;
     private void Start()
     {
         IsVoluntary = false;
@@ -37,7 +38,7 @@ public class SvrPlayProgressBarPanel : MonoBehaviour
             IsVoluntary = false;
             return;
         }
-
+        DisplayTime=3;
         long times = (long)(f * TotalTime);
         int seconds = (int)(times / 1000);
         CurrentTimeText.text = SecondsToHMS(seconds);
@@ -45,12 +46,31 @@ public class SvrPlayProgressBarPanel : MonoBehaviour
             OnSeekToTime(times);
     }
 
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if(DisplayTime>0)
+        {
+            DisplayTime-=Time.deltaTime;
+            CurrentTimeText.transform.localScale=Vector3.one;
+            TotalTimeText.transform.localScale=Vector3.one;
+        }
+        else
+        {
+            DisplayTime=0;
+            CurrentTimeText.transform.localScale=Vector3.zero;
+            TotalTimeText.transform.localScale=Vector3.zero;
+        }
+    }
+
     public void SetTotalTime(long totalTime)
     {
         TotalTime = totalTime;
 
         int seconds = (int)(totalTime / 1000);
-        TotalTimeText.text = SecondsToHMS(seconds);
+        TotalTimeText.text = "/" + SecondsToHMS(seconds);
     }
 
     public void SetCurrentTime(long currentTime)

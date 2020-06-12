@@ -11,7 +11,7 @@ public class AfterEnter : MonoBehaviour
 
     public void OnEnterRecommendVideo()
     {      
-        (Controller.panelComeback.Peek() as GameObject).GetComponentInChildren<VideoManager>().RecommendId = int.Parse(name);
+       // (Controller.panelComeback.Peek() as GameObject).GetComponentInChildren<VideoManager>().RecommendId = int.Parse(name);
   
     }
 

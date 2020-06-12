@@ -46,7 +46,6 @@ public class ControlPanelManager : MonoBehaviour
         player = Camera.main.transform;
 
         DanmuSwitch();
-        changeModel = ChangePlayModelButton.GetComponent<ChangeModel>();
     }
 
     void Update()
