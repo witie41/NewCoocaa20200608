@@ -148,9 +148,9 @@ public class Controller : MonoBehaviour
     static Panels my_phone_login_panels;
     static Panels my_common_login_panels;
     static Panels my_recommend_panels;
-     GameObject living_room ;
-    GameObject grand_living_room;
-     GameObject _360_living_room ;
+    public GameObject living_room ;
+    public GameObject grand_living_room;
+    public GameObject _360_living_room ;
     static public bool user_image;
     static public string mobile_number_email;
     static public string user_password;
@@ -222,7 +222,7 @@ public class Controller : MonoBehaviour
         //panelComeback.Push(select_panels);
         //StartCoroutine(DataClassInterface.IEGetDate<FirstSelected[]>(AllData.DataString + "/vr/getVrRecommendList", new DataClassInterface.OnDataGet<FirstSelected[]>(GetFirstInfornation), null));
          StartCoroutine(DataClassInterface.IEGetDate<LivingRoomData[]>(AllData.DataString + "/vr/getBroadcastList?pageId=1" , new DataClassInterface.OnDataGet<LivingRoomData[]>(GetMaxId), null));
-       
+        panelComeback.Push(living_room);
 
     }
 
@@ -1402,34 +1402,43 @@ public class Controller : MonoBehaviour
 
     public void EnterLivingRoom()
     {
-        if(living_room.activeInHierarchy == false)
-        {
-            living_room.SetActive(true);
-        } 
-        if(_360_living_room.activeInHierarchy == true)
-        {
-            _360_living_room.SetActive(false);
-        }
+        Debug.Log("进入直播间");
+        if (GameObject.Find("Living room") != null)
+            GameObject.Find("Living room").SetActive(false);
+        if (GameObject.Find("Living room(Clone)") != null)
+            GameObject.Find("Living room(Clone)").SetActive(false);
+        if (GameObject.Find("Three hundred and sixty dergee living room") != null)
+            GameObject.Find("Three hundred and sixty dergee living room room").SetActive(false);
+
+        if (GameObject.Find("Three hundred and sixty dergee living room(Clone)") != null)
+            GameObject.Find("Three hundred and sixty dergee living room room(Clone)").SetActive(false);
+
+        living_room = CreatLivingRoom("LivingRoom/Living room folder/Living room");
+ 
+
 
         panelComeback.Push(living_room);
     }
     public void Enter360DegreeVideos()
     {
-
-        if(_360_living_room.activeInHierarchy == false)
-        {
-            _360_living_room.SetActive(true);
-        }
-        if(living_room.activeInHierarchy == true)
-        {
-            living_room.SetActive(false);
-        }
+        Debug.Log("点击360");
+        if (GameObject.Find("Living room") != null)
+            GameObject.Find("Living room").SetActive(false);
+        if (GameObject.Find("Living room(Clone)") != null)
+            GameObject.Find("Living room(Clone)").SetActive(false);
+        if (GameObject.Find("Three hundred and sixty dergee living room") != null)
+            GameObject.Find("Three hundred and sixty dergee living room room").SetActive(false);
+        if (GameObject.Find("Three hundred and sixty dergee living room(Clone)") != null)
+            GameObject.Find("Three hundred and sixty dergee living room room(Clone)").SetActive(false);
+        _360_living_room = CreatLivingRoom("LivingRoom/360 degree video folder/Three hundred and sixty dergee living room");
         panelComeback.Push(_360_living_room);
     }
     public void EnterGrandScreenCinema()
     {
         Debug.Log("事件响应");
         DisableHomeCanvs();
+        if (GameObject.Find("Grand curtain cinema room") != null)
+            GameObject.Find("Grand curtain cinema room").SetActive(false);
         if (GameObject.Find("Grand curtain cinema room(Clone)") != null)
             GameObject.Find("Grand curtain cinema room(Clone)").SetActive(false);
         grand_living_room = CreatLivingRoom("LivingRoom/Grand curtain cinema folder/Grand curtain cinema room");
@@ -1623,7 +1632,7 @@ public class Controller : MonoBehaviour
     {
         if (mobile_number_email == null)
         {
-            DisplayMsg("请输入手机号");
+            DisplayMsg("请输入手机号F");
             Debug.LogError("请输入手机号");
         }
         else
@@ -2413,6 +2422,11 @@ public class Controller : MonoBehaviour
             _360_living_room.transform.GetComponentInChildren<VideoManager>().Id = data.workId;
             break;
         }
+    }
+
+    public void ButtonTest()
+    {
+        Debug.Log("点击了");
     }
 }
 

@@ -93,7 +93,7 @@ public class ChangeModel : MonoBehaviour
                     currentPlayer.GetComponent<SvrVideoPlayerDemo>().PlayVideoByIndex(0,live);
             }
 
-            Debug.Log(333333333);
+       
         }
         
     }

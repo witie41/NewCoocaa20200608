@@ -23,22 +23,28 @@ public class RoomButtonControl : MonoBehaviour
     public Transform LeftTag;
     public Transform RightTag;
     public Text VName;
+    public string vname;
     public int ID;
+    public string photo;
     public void Init(VideoType VType, int id, string vName, string photo)
     {
-        LeftTag.gameObject.SetActive(false);
-        RightTag.gameObject.SetActive(false);
-        VName.text = vName;
+
+       // Controller controller = new Controller();
+        //LeftTag.gameObject.SetActive(false);
+        //RightTag.gameObject.SetActive(false);
+        vname = vName;
         ID = id;
-        StartCoroutine(DataClassInterface.IEGetSprite(photo, (Sprite sprite, GameObject gtb, string nothing) => { Photo.sprite = sprite; }, null));
+        this.VType = VType;
+        //StartCoroutine(DataClassInterface.IEGetSprite(photo, (Sprite sprite, GameObject gtb, string nothing) => { Photo.sprite = sprite; }, null));
         //直播间
-        if (VType == VideoType.Live_Off || VType == VideoType.Live_On)
+        /*if (VType == VideoType.Live_Off || VType == VideoType.Live_On)
         {
+          
             LeftTag.gameObject.SetActive(true);
             GetComponent<Button>().onClick.AddListener(() =>
             {
                 GameObject.Find("EventController").GetComponent<Controller>().EnterLivingRoom();
-                (Controller.panelComeback.Peek() as GameObject).GetComponentInChildren<MsgManager>().CurrentId = ID;
+               controller.living_room .GetComponentInChildren<MsgManager>().CurrentId = ID;
             });
             if (VType == VideoType.Live_On)
             {
@@ -57,8 +63,9 @@ public class RoomButtonControl : MonoBehaviour
             RightTag.gameObject.SetActive(true);
             GetComponent<Button>().onClick.AddListener(() =>
             {
+                Debug.Log("点击了");
                 GameObject.Find("EventController").GetComponent<Controller>().Enter360DegreeVideos();
-                (Controller.panelComeback.Peek() as GameObject).GetComponentInChildren<VideoManager>().Id = ID;
+                controller._360_living_room.GetComponentInChildren<VideoManager>().Id = ID;
             });
             switch (VType)
             {
@@ -83,6 +90,18 @@ public class RoomButtonControl : MonoBehaviour
                     break;
 
             }
-        }
+        }*/
+    }
+
+    public RoomButtonControl(VideoType VType, int id, string vName)
+    {
+        vname = vName;
+        ID = id;
+        this.VType = VType;
+    }
+
+    public void Setphoto(string photo)
+    {
+        this.photo = photo;
     }
 }

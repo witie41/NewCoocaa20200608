@@ -33,6 +33,10 @@ TagManager:
   - 360Content
   - ButtonControl
   - User
+  - Mid
+  - Left
+  - Right
+  - LivingRoom
   layers:
   - Default
   - TransparentFX
