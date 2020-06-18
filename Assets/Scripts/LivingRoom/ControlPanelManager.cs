@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ControlPanelManager : MonoBehaviour
 {
     private Text VolumeValueText;
-    private float acitiveTime = 0;
+    private float activeTime = 0;
     private GameObject DanmuCanvas;
     private Transform player;
     private ChangeModel changeModel;
@@ -15,18 +15,24 @@ public class ControlPanelManager : MonoBehaviour
 
     [Header("控制面板")]
     public GameObject ControlPanel;
+
     [Header("面板")]
     public GameObject Panels;
+
     [Header("弹幕状态")]
     public Text DanmuState;
+
     [Header("切换播放模式按钮")]
     public GameObject ChangePlayModelButton;
+
+    [Header("面板控制器")]
+    public PanelsControl panelsControl;
 
     //当前面板状态
     private bool currentState = true;
     private bool CurrentState
     {
-       get
+        get
         {
             return currentState;
         }
@@ -51,10 +57,18 @@ public class ControlPanelManager : MonoBehaviour
     void Update()
     {
         //点击屏幕唤醒/隐藏菜单
-        if( GvrControllerInput.ClickButtonDown||Input.GetMouseButtonUp(0))
+        if (GvrControllerInput.ClickButtonDown || Input.GetMouseButtonUp(0))
         {
-            if(EventSystem.current.IsPointerOverGameObject() == false)
-             CurrentState = !CurrentState;
+            if (EventSystem.current.IsPointerOverGameObject() == false)
+                CurrentState = !CurrentState;
+        }
+        if (currentState&&panelsControl.CurrentPanel==panelsControl.RoomInfoPanel)
+            activeTime += Time.deltaTime;
+        else
+            activeTime = 0;
+        if (activeTime >= 15)
+        {
+            CurrentState=false;
         }
     }
 
@@ -62,7 +76,7 @@ public class ControlPanelManager : MonoBehaviour
     private void ChangePanelActive(bool value)
     {
         //面板隐藏
-        if(!value)
+        if (!value)
         {
             //ControlPanel.transform.localScale = Vector3.zero;
             Panels.transform.localScale = Vector3.zero;
@@ -73,10 +87,10 @@ public class ControlPanelManager : MonoBehaviour
         else
         {
             //ControlPanel.transform.localScale = Vector3.one;
-            Panels.transform.position = player.position + player.forward * 30 ;
+            Panels.transform.position = player.position + player.forward * 30;
             Panels.GetComponentInChildren<PanelsControl>().CurrentPanel = Panels.GetComponentInChildren<PanelsControl>().RoomInfoPanel;
-           // Debug.Log(player.position+""+ Panels.transform.position);
-            Panels.transform.LookAt(Panels.transform.position+ Panels.transform.position-player.position);
+            // Debug.Log(player.position+""+ Panels.transform.position);
+            Panels.transform.LookAt(Panels.transform.position + Panels.transform.position - player.position);
             Panels.transform.localScale = Vector3.one;
             //ChangePlayModelButton.transform.localScale = Vector3.one;
         }
@@ -90,7 +104,7 @@ public class ControlPanelManager : MonoBehaviour
         DanmuState.text = DanmuIsON ? "关闭弹幕" : "开启弹幕";
 
         //清除旧弹幕
-        DanmuCanvas.transform.localScale= DanmuIsON ? Vector3.one*0.04f: Vector3.zero;
+        DanmuCanvas.transform.localScale = DanmuIsON ? Vector3.one * 0.04f : Vector3.zero;
     }
 
     //退出时清除弹幕
@@ -101,9 +115,9 @@ public class ControlPanelManager : MonoBehaviour
         DanmuState.text = DanmuIsON ? "关闭弹幕" : "开启弹幕";
 
         //清除旧弹幕
-        DanmuCanvas.transform.localScale = DanmuIsON ? Vector3.one*0.04f: Vector3.zero;
+        DanmuCanvas.transform.localScale = DanmuIsON ? Vector3.one * 0.04f : Vector3.zero;
 
-        foreach(Transform danmu in DanmuCanvas.transform)
+        foreach (Transform danmu in DanmuCanvas.transform)
         {
             danmu.gameObject.SetActive(false);
         }

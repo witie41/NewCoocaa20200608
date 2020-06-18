@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Timers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,10 +9,12 @@ using Gvr;
 
 public class NormalPanelControl: MonoBehaviour
 {
-    private float acitiveTime = 0;
+    private float activeTime = 0;
 
     [Header("控制面板")]
     public GameObject ControlPanel;
+
+    public PanelsControl panelsControl;
 
     private Transform player;
     
@@ -36,7 +39,7 @@ public class NormalPanelControl: MonoBehaviour
     private void Start()
     {
         player = Camera.main.transform;
-
+        activeTime=0;
     }
 
     void Update()
@@ -46,6 +49,14 @@ public class NormalPanelControl: MonoBehaviour
         {
             if(EventSystem.current.IsPointerOverGameObject() == false)
              CurrentState = !CurrentState;
+        }
+        if (currentState&&panelsControl.CurrentPanel==panelsControl.RoomInfoPanel)
+            activeTime+=Time.deltaTime;
+        else
+            activeTime=0;
+        if(activeTime>=15)
+        {
+            CurrentState=false;
         }
     }
 

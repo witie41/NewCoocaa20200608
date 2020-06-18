@@ -104,6 +104,7 @@ public class GiftData
     public string giftType;
     public string name;
     public string imgPath;
+    public int coocaaCoin;
 }
 
 public class ReportData
