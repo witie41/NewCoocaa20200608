@@ -38,7 +38,7 @@ public class GetVideoData : MonoBehaviour
     int allivingroom = 0;
     bool isRun = true;
     GameObject room;
-   static RoomButtonControl[] roominfo = new RoomButtonControl[1000];
+    RoomButtonControl[] roominfo = new RoomButtonControl[1000];
     // Start is called before the first frame update
     void Start()
     {
@@ -215,7 +215,7 @@ public class GetVideoData : MonoBehaviour
                                 // roominfo[i] = new RoomButtonControl();
                                 videoType = VideoType.Live_Off;
                                 // roominfo[i].Init(videoType, livingDatas[i].id, livingDatas[i].title, livingDatas[i].coverImg1);
-                                roominfo[i] = new RoomButtonControl(videoType, livingDatas[i].id, livingDatas[i].title);
+                                roominfo[i] = new RoomButtonControl(videoType, livingDatas[indexliving].id, livingDatas[indexliving].title);
                                 roominfo[i].Setphoto(livingDatas[indexliving].coverImg1);
 
 
@@ -262,10 +262,7 @@ public class GetVideoData : MonoBehaviour
                                     roominfo[i].Setphoto(videoDatas[indexvideo].cover);
 
                                 }
-                                else
-                                {
-                                    continue;
-                                }
+              
                                 indexvideo++;
                             }
                             else
@@ -483,36 +480,35 @@ public class GetVideoData : MonoBehaviour
     private void FlashMyRoom(int index, int real, int maxView,GameObject panel)//index:当前页数，real:实际数据 maxview：最大显示房间
     {
         Controller controller = new Controller();
-        for (int i = 0; i <= ((real - index * 12) > maxView ? maxView : (real - index * 12)); i++)
+        for (int i = 0; i < ((real - index * 12) > maxView ? maxView : (real - index * 12)); i++)
        //for(int i = 1;i<=1;i++)
         {
             
-                Destroy(GameObject.Find("RoomsButton(Clone)"));
-             GameObject gbj = Instantiate(room, panel.transform);
-            gbj.transform.Find("LeftTag").gameObject.SetActive(false);
+               // Destroy(GameObject.Find("RoomsButton(Clone)"));
+               GameObject gbj = Instantiate(room, panel.transform);
+                gbj.transform.Find("LeftTag").gameObject.SetActive(false);
                 gbj.transform.Find("RightTag").gameObject.SetActive(false);
-                gbj.transform.Find("Name").transform.GetComponent<Text>().text = roominfo[i].vname;
-                StartCoroutine(DataClassInterface.IEGetSprite(roominfo[i].photo, new DataClassInterface.OnDataGetSprite(GetSprite), gbj));
-                 Debug.Log("画布名称"+panel.name+"名称·1"+roominfo[i + index * 12].vname + "视频：" + roominfo[i].ID + "视频分类" + roominfo[i].VType);
+                gbj.transform.Find("Name").transform.GetComponent<Text>().text = roominfo[i+index*12].vname;
+                StartCoroutine(DataClassInterface.IEGetSprite(roominfo[i + index * 12].photo, new DataClassInterface.OnDataGetSprite(GetSprite), gbj));
+            gbj.name = roominfo[i + index * 12].ID + "";
 
-            if (roominfo[i + index * 12].ID!=0)    {
-                if (roominfo[i + index * 12].VType == VideoType.Live_Off || roominfo[i + index * 12].VType == VideoType.Live_On)
-                {
 
-                    gbj.transform.Find("LeftTag").gameObject.SetActive(true);
-                    Debug.Log("添加方法");
-                    gbj.GetComponent<Button>().onClick.AddListener(() =>
+            if (roominfo[i + index * 12].VType == VideoType.Live_Off || roominfo[i + index * 12].VType == VideoType.Live_On)
+            {
+                           gbj.transform.Find("LeftTag").gameObject.SetActive(true);
+
+                gbj.GetComponent<Button>().onClick.AddListener(() => {
+                    GameObject.Find("EventController").GetComponent<Controller>().EnterLivingRoom();
+                    if (GameObject.Find("Living room"))
                     {
-                        GameObject.Find("EventController").GetComponent<Controller>().EnterLivingRoom();
-                          if(GameObject.Find("Living room"))
-                        {
-                            GameObject.Find("Living room").GetComponentInChildren<MsgManager>().CurrentId = roominfo[i + index * 12].ID;
-                        }
-                          else if (GameObject.Find("Living room(Clone)"))
-                        {
-                            GameObject.Find("Living room(Clone)").GetComponentInChildren<MsgManager>().CurrentId = roominfo[i + index * 12].ID;
-                        }
-                    });
+                        GameObject.Find("Living room").GetComponentInChildren<MsgManager>().CurrentId = Int32.Parse(gbj.name);
+                    }
+                    else if (GameObject.Find("Living room(Clone)"))
+                    {
+                                     GameObject.Find("Living room(Clone)").GetComponentInChildren<MsgManager>().CurrentId = Int32.Parse(gbj.name);
+                    }
+                }) ;
+
                     if (roominfo[i + index * 12].VType == VideoType.Live_On)
                     {
                         gbj.transform.Find("LeftTag").GetComponentInChildren<Text>().text = "直播中";
@@ -528,18 +524,21 @@ public class GetVideoData : MonoBehaviour
                 else
                 {
                     gbj.transform.Find("RightTag").gameObject.SetActive(true);
-                    Debug.Log("添加方法");
-                    gbj.GetComponent<Button>().onClick.AddListener(() =>
+                Debug.Log("添加方法" + i + "画布名称" + panel.name + "名称·1" + roominfo[i + index * 12].vname + "视频：" + roominfo[i + index * 12].ID + "视频分类" + roominfo[i + index * 12].VType);
+
+                gbj.GetComponent<Button>().onClick.AddListener(() =>
                     {
-                        
+                        Debug.Log("添加方法" + i + "画布名称" + panel.name + "名称·1" + roominfo[i + index * 12].vname + "视频：" + roominfo[i + index * 12].ID + "视频分类" + roominfo[i + index * 12].VType);
+
                         GameObject.Find("EventController").GetComponent<Controller>().Enter360DegreeVideos();
                         if(GameObject.Find("Three hundred and sixty dergee living room"))
                         {
-                            GameObject.Find("Three hundred and sixty dergee living room").GetComponentInChildren<VideoManager>().Id = roominfo[i + index * 12].ID;
+                            GameObject.Find("Three hundred and sixty dergee living room").GetComponentInChildren<VideoManager>().Id = Int32.Parse(gbj.name);
                         }
                       else  if (GameObject.Find("Three hundred and sixty dergee living room(Clone)"))
                         {
-                            GameObject.Find("Three hundred and sixty dergee living room(Clone)").GetComponentInChildren<VideoManager>().Id = roominfo[i + index * 12].ID;
+                            Debug.Log("进入直播间");
+                            GameObject.Find("Three hundred and sixty dergee living room(Clone)").GetComponentInChildren<VideoManager>().Id = Int32.Parse(gbj.name);
                         }
                     });
                     switch (roominfo[i + index * 12].VType)
@@ -566,8 +565,8 @@ public class GetVideoData : MonoBehaviour
 
                     }
                 }
-                         }
-            gbj.name = i + ""+panel.name; 
+                         
+        
             
 
         }
@@ -594,7 +593,6 @@ public class GetVideoData : MonoBehaviour
         gbj.GetComponent<Image>().sprite = s;
 
     }
-
 
 
 }
