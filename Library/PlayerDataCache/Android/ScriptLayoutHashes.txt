@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-D:/unity/unity/Coocaa/NewCoocaa20200424/1.apk
+D:/1442348098/FileRecv/NewCoocaa20200424/1.apk
 SceneListBegin?
 Assets/test.unity
 SceneListEnd?
@@ -156,6 +156,7 @@ c4a3741ad39ad91a7e39385ec647e9b4 Assembly-CSharp.dll:.SvrVideoControlPanel
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 9c5049a5be03714242c777afa18e44bf Assembly-CSharp.dll:GoogleVR.VideoDemo.PositionSwapper
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.OnLoginTip
 992c2e310f4a5c77db866ce973c70415 Assembly-CSharp.dll:.RoomButtonControl
 2a7f35c7e04eb3d8ab729fcdfab36fef Assembly-CSharp.dll:.ShortLivingRoomInfo
 5025e40a187ef0ae5c9b908e8b121843 Assembly-CSharp.dll:.GvrLaserPointer
@@ -180,7 +181,7 @@ ab20971cdaf9f9c64106c44b2dbdb234 Assembly-CSharp.dll:.SvrPlayProgressBarPanel
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.WebSocketSample
 46246a466a11017be309d31930e3d60f Assembly-CSharp.dll:.GvrTrackedController
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
-b429cbd69016637fe7726e5280545fd9 Assembly-CSharp.dll:.NormalPanelControl
+68d8557d16abde0f7135c49f0e1c6747 Assembly-CSharp.dll:.NormalPanelControl
 51cac5464c97d1da04edf24663372741 Assembly-CSharp.dll:IVRCommon.Keyboard.Action.ComplexBoardAction
 109dd12b7d8dc4016f0271e8e6de2239 ProBuilderCore-Unity5.dll:ProBuilder2.Common.pb_BezierShape
 710b2e947270e720a6c7fb64544ec1a8 ProBuilderCore-Unity5.dll:ProBuilder2.Common.pb_ColorPalette
@@ -218,7 +219,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 42beff6eeb8a0c759e2f13c2992f9daa Assembly-CSharp.dll:.EmojiControl
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.AutoDestroyGiftInfo
 6edc83f387aa5c989e03d3cb5179c7b9 Assembly-CSharp.dll:.SvrVolumePanel
-c7aab2a4369decd9d7721656a5964266 Assembly-CSharp.dll:.ControlPanelManager
+324ba23ff94586d1cb44a92c5fa51dae Assembly-CSharp.dll:.ControlPanelManager
 bf3913f0d6c694bf20e1d681c79a4993 Assembly-CSharp.dll:GoogleVR.HelloVR.ObjectController
 35a9693c388776aaf487636491a20f11 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e1300922cc039f41ab46a47f4cb05898 Unity.TextMeshPro.dll:TMPro.TMP_Settings
