@@ -2402,10 +2402,10 @@ public class Controller : MonoBehaviour
             
             }
         }
-         Debug.Log("当前房间id=="+MaxId);
+        
          if(MaxId == 0)//等于0说明没有直播了直接跳转到巨幕影院.
          {
-             Debug.Log("这里动了????");
+       
              living_room.SetActive(false);
              _360_living_room.SetActive(true);       
              StartCoroutine(DataClassInterface.IEGetDate<VideoData[]>(AllData.DataString + "/vr/getVideoList?pageId=1" , new DataClassInterface.OnDataGet<VideoData[]>(GotoVideo), null));

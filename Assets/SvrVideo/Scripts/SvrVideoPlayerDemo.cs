@@ -91,7 +91,7 @@ public class SvrVideoPlayerDemo : MonoBehaviour
             SvrVideoPlayer.SetPlayMode3DTopBottom();
         else
             SvrVideoPlayer.SetPlayMode2D();
-
+        Debug.Log(currentPlayingVideoIndex);
         string name = VideoUrls[currentPlayingVideoIndex].Substring(VideoUrls[currentPlayingVideoIndex].LastIndexOf('/') + 1);
         SvrVideoControlPanel.SetVideoName(name);
         SvrVideoControlPanel.SetVideoCurrentTime(0);
