@@ -16,6 +16,7 @@ public class GiftButton : MonoBehaviour
 
     public void SendGift()
     {
+        CurrentRoom.GetComponent<ControlPanelManager>().CurrentState=false;
         if (AllData.userId == -1)
         {
             MsgManager manager = GameObject.FindGameObjectWithTag("LivingRoomManager").GetComponent<MsgManager>();

@@ -30,7 +30,7 @@ public class ControlPanelManager : MonoBehaviour
 
     //当前面板状态
     private bool currentState = true;
-    private bool CurrentState
+    public bool CurrentState
     {
         get
         {
@@ -62,7 +62,7 @@ public class ControlPanelManager : MonoBehaviour
             if (EventSystem.current.IsPointerOverGameObject() == false)
                 CurrentState = !CurrentState;
         }
-        if (currentState&&panelsControl.CurrentPanel==panelsControl.RoomInfoPanel)
+        if (currentState&&panelsControl.CurrentPanel==null)
             activeTime += Time.deltaTime;
         else
             activeTime = 0;
@@ -87,10 +87,10 @@ public class ControlPanelManager : MonoBehaviour
         else
         {
             //ControlPanel.transform.localScale = Vector3.one;
-            Panels.transform.position = player.position + player.forward * 30;
-            Panels.GetComponentInChildren<PanelsControl>().CurrentPanel = Panels.GetComponentInChildren<PanelsControl>().RoomInfoPanel;
+            Panels.transform.parent.position = player.position + player.forward * 20;
+            Panels.GetComponentInChildren<PanelsControl>().CurrentPanel = null;
             // Debug.Log(player.position+""+ Panels.transform.position);
-            Panels.transform.LookAt(Panels.transform.position + Panels.transform.position - player.position);
+            Panels.transform.parent.LookAt(Panels.transform.position + Panels.transform.position - player.position);
             Panels.transform.localScale = Vector3.one;
             //ChangePlayModelButton.transform.localScale = Vector3.one;
         }

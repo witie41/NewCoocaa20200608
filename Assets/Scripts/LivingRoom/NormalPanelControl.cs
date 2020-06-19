@@ -50,7 +50,7 @@ public class NormalPanelControl: MonoBehaviour
             if(EventSystem.current.IsPointerOverGameObject() == false)
              CurrentState = !CurrentState;
         }
-        if (currentState&&panelsControl.CurrentPanel==panelsControl.RoomInfoPanel)
+        if (currentState&&panelsControl.CurrentPanel==null)
             activeTime+=Time.deltaTime;
         else
             activeTime=0;
@@ -76,7 +76,7 @@ public class NormalPanelControl: MonoBehaviour
         {
             //ControlPanel.transform.localScale = Vector3.one;
             ControlPanel.transform.position = player.position + player.forward * 30 ;
-            ControlPanel.GetComponentInChildren<PanelsControl>().CurrentPanel = ControlPanel.GetComponentInChildren<PanelsControl>().RoomInfoPanel;
+            ControlPanel.GetComponentInChildren<PanelsControl>().CurrentPanel = null;
            // Debug.Log(player.position+""+ Panels.transform.position);
             ControlPanel.transform.LookAt(ControlPanel.transform.position+ ControlPanel.transform.position-player.position);
             ControlPanel.transform.localScale = Vector3.one;

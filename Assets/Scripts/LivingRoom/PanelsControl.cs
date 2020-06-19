@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System.Data.SqlTypes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PanelsControl : MonoBehaviour
 {
-    public Transform RoomInfoPanel;
-    private Transform currentPanel;
+    public Transform VideoList;
+    private Transform currentPanel=null;
     public Transform CurrentPanel
     {
         set
@@ -19,10 +20,9 @@ public class PanelsControl : MonoBehaviour
             currentPanel = value;
             if (currentPanel != null)
                 StartCoroutine(IEBigger(currentPanel));
-            else
-            {   
-                currentPanel=RoomInfoPanel;
-                StartCoroutine(IEBigger(currentPanel));
+            if(currentPanel==VideoList)
+            {
+                transform.parent.localScale=Vector3.zero;
             }
         }
         get
@@ -31,13 +31,6 @@ public class PanelsControl : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
-    void Start()
-    {
-        CurrentPanel = RoomInfoPanel;
-    }
 
     float Speed = 0.05f;
 
