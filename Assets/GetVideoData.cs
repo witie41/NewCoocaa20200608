@@ -38,6 +38,9 @@ public class GetVideoData : MonoBehaviour
     int allivingroom = 0;
     bool isRun = true;
     GameObject room;
+    GameObject flashroom1 ;
+    GameObject flashroom2;
+    float speed = 1;
     RoomButtonControl[] roominfo = new RoomButtonControl[1000];
     // Start is called before the first frame update
     void Start()
@@ -88,13 +91,17 @@ public class GetVideoData : MonoBehaviour
         {
             roominfo[i] = new RoomButtonControl(VideoType.Video2D, 0, "");
         }
+
+        FlashTest(0,50,9,mid);
+        FlashTest(1,50,9,right);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (isFlash)
+        if (false)
         {
             StartCoroutine(DataClassInterface.IEGetDate<VideoData[]>(AllData.DataString + "/vr/getVideoList", new DataClassInterface.OnDataGet<VideoData[]>(GetVideo), null));
             StartCoroutine(DataClassInterface.IEGetDate<LivingRoomData[]>(AllData.DataString + "/vr/getBroadcastList", new DataClassInterface.OnDataGet<LivingRoomData[]>(GetLiving), null));
@@ -111,7 +118,7 @@ public class GetVideoData : MonoBehaviour
         }
 
     
-           if(isRun)
+           if(!isRun)
         {
             if (videoDatas.Count != 0 && livingDatas.Count != 0)
             {
@@ -273,8 +280,8 @@ public class GetVideoData : MonoBehaviour
                     }
                     isRun = false; 
                 }
-                FlashMyRoom(index, allroom, 12, mid);
-                FlashMyRoom(index + 1, allroom, 12, right);
+                FlashMyRoom(index, allroom, 9, mid);
+                FlashMyRoom(index + 1, allroom, 9, right);
                 //Instantiate(Rooms[0], mid.transform);
                 //Debug.Log("所有的数据" + Rooms.Length + "区别数据+" + Rooms[11] + "||" + Rooms[230]);
             }
@@ -284,7 +291,14 @@ public class GetVideoData : MonoBehaviour
 
         
     }
+    void FlashTest(int index, int real, int maxView,GameObject panel){
 
+for (int i = 0; i < ((real - index * 9) > maxView ? maxView : (real - index * 9)); i++)
+{
+    Instantiate(room,panel.transform);
+    room.name = i+"";
+}
+    }
     void GetVideo(VideoData[]datas ,GameObject [] gbj,string str)//获取数据
     {
         int i = 0;
@@ -322,6 +336,18 @@ public class GetVideoData : MonoBehaviour
         else
         {
             index--;
+                if(videopanels[0].mypos == pos.Mid)
+        {
+           
+        }
+        else if(videopanels[1].mypos == pos.Mid)
+        {
+            
+        }
+        else if(videopanels[2].mypos == pos.Mid)
+        {
+
+        }
         }
     }
   public  void ClickRight()
@@ -329,15 +355,19 @@ public class GetVideoData : MonoBehaviour
         index++;
         if(videopanels[0].mypos == pos.Mid)
         {
-           
+           videopanels[0].panel.transform.position = new Vector3(Mathf.SmoothDamp(videopanels[0].panel.transform.position.x,leftpanelVector.x,ref speed,1),Mathf.SmoothDamp(videopanels[0].panel.transform.position.y,leftpanelVector.y,ref speed,1),Mathf.SmoothDamp(videopanels[0].panel.transform.position.z,leftpanelVector.z,ref speed,1));
+           videopanels[1].panel.transform.position = new Vector3(Mathf.SmoothDamp(videopanels[1].panel.transform.position.x,leftpanelVector.x,ref speed,1),Mathf.SmoothDamp(videopanels[1].panel.transform.position.y,leftpanelVector.y,ref speed,1),Mathf.SmoothDamp(videopanels[1].panel.transform.position.z,leftpanelVector.z,ref speed,1));
+        
         }
         else if(videopanels[1].mypos == pos.Mid)
         {
-
+        videopanels[1].panel.transform.position = new Vector3(Mathf.SmoothDamp(videopanels[1].panel.transform.position.x,leftpanelVector.x,ref speed,1),Mathf.SmoothDamp(videopanels[1].panel.transform.position.y,leftpanelVector.y,ref speed,1),Mathf.SmoothDamp(videopanels[1].panel.transform.position.z,leftpanelVector.z,ref speed,1));
+        
         }
         else if(videopanels[2].mypos == pos.Mid)
         {
-
+            videopanels[2].panel.transform.position = new Vector3(Mathf.SmoothDamp(videopanels[2].panel.transform.position.x,leftpanelVector.x,ref speed,1),Mathf.SmoothDamp(videopanels[2].panel.transform.position.y,leftpanelVector.y,ref speed,1),Mathf.SmoothDamp(videopanels[2].panel.transform.position.z,leftpanelVector.z,ref speed,1));
+        
         }
     }
      
@@ -480,7 +510,7 @@ public class GetVideoData : MonoBehaviour
     private void FlashMyRoom(int index, int real, int maxView,GameObject panel)//index:当前页数，real:实际数据 maxview：最大显示房间
     {
         Controller controller = new Controller();
-        for (int i = 0; i < ((real - index * 12) > maxView ? maxView : (real - index * 12)); i++)
+        for (int i = 0; i < ((real - index * 9) > maxView ? maxView : (real - index * 9)); i++)
        //for(int i = 1;i<=1;i++)
         {
             
