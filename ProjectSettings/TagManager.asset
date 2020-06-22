@@ -37,6 +37,13 @@ TagManager:
   - Left
   - Right
   - LivingRoom
+  - Posmid
+  - Posright
+  - Posleft
+  - flash1
+  - flash2
+  - Flash
+  - Flash1
   layers:
   - Default
   - TransparentFX

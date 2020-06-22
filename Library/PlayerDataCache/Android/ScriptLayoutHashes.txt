@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-D:/1442348098/FileRecv/NewCoocaa20200424/1.apk
+D:/unity/unity/Coocaa/NewCoocaa20200424/1.apk
 SceneListBegin?
 Assets/test.unity
 SceneListEnd?
@@ -68,8 +68,6 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 3bb1b4bae6823a4524e793cdb8702970 Assembly-CSharp.dll:GoogleVR.PermissionsDemo.PermissionsFlowManager
 d3c76b14a25eebd3a3323dd43297919c Unity.TextMeshPro.dll:TMPro.TMP_InputField
 3d9793cf3c2e8d1e3ca9ec12de56173c Assembly-CSharp.dll:.EdgeChange
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 60eb065cb8ea340f8c72045b999a032f Assembly-CSharp.dll:GoogleVR.VideoDemo.AppButtonInput
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.AfterEnter
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -266,7 +264,7 @@ c80d3238226b1d162e3ff2069e0972ed Assembly-CSharp.dll:ProBuilder2.Examples.Camera
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 e5c0de510f5ae3d87d08cf5ba6017102 Assembly-CSharp.dll:.MsgManager
 17ba55377a0f3a38793983b70337fa03 Assembly-CSharp.dll:.ShotKeyBoard
-587ee86b344d48190c39585ab9de8203 Assembly-CSharp.dll:.PanelsControl
+a62900b30f4984d1ebc4a9820e65a516 Assembly-CSharp.dll:.PanelsControl
 89c433fef753b02de32958d7fe54cc06 Assembly-CSharp.dll:.GvrLaserVisual
 e71cfde129bae4ea8078c5465c0ea592 Assembly-CSharp.dll:.ReportCnotrol
 776f79eb06ae67dc120ef7d10696a34c Assembly-CSharp.dll:.GvrControllerVisual
