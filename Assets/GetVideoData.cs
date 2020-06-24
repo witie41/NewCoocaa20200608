@@ -135,9 +135,36 @@ public class GetVideoData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("啊这！！"+index+"数据"+allroom+"+"+allpage);
+
+        if(index != 1||index != allpage-1)
+        {
+            if(HidePanel1.activeInHierarchy == false)
+            {
+                HidePanel1.SetActive(true);
+            }
+             if (HidePanel2.activeSelf == false)
+                {
+                    HidePanel2.SetActive(true);
+                }
+        }
+
+                if(index==0)
+            {
+               HidePanel1.SetActive(false);
+            }
+              if(index == allpage-1)
+            {
+              if (HidePanel2.activeSelf == true)
+                {
+                    HidePanel2.SetActive(false);
+                }
+           }
         if (isFlash)
         {
+
+            
+                HideAll(videopanels[3].videopanel);
+                HideAll(videopanels[4].videopanel);
             StartCoroutine(DataClassInterface.IEGetDate<VideoData[]>(AllData.DataString + "/vr/getVideoList", new DataClassInterface.OnDataGet<VideoData[]>(GetVideo), null));
             StartCoroutine(DataClassInterface.IEGetDate<LivingRoomData[]>(AllData.DataString + "/vr/getBroadcastList", new DataClassInterface.OnDataGet<LivingRoomData[]>(GetLiving), null));
             allroom = allivingroom + allvideoroom;
@@ -331,8 +358,10 @@ public class GetVideoData : MonoBehaviour
 
            if(needright)
         {
+            needleft =false;   
             if (videopanels[0].mypos == pos.Mid)
             {
+               
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, leftpanelVector, ref speed, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D, midpanelVector, ref speed1, 0.3f);
                 videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D, flash1, ref speed2, 0.3f);
@@ -347,11 +376,11 @@ public class GetVideoData : MonoBehaviour
                     videopanels[2].mypos = pos.Flash1;
                     videopanels[3].mypos = pos.Flash2;
                     videopanels[4].mypos = pos.Right;
-                    Debug.Log("底部1");
+                   
                     FlashMyRoom(index + 2, ref allroom, 9, videopanels[3].videopanel);
-                    Debug.Log("底部2");
+                  
                     FlashMyRoom(index - 2, ref allroom, 9, videopanels[2].videopanel);
-                    Debug.Log("底部3");
+                  
                     //videopanels[1].panel.transform.Find("Panels").Find("mid").GetComponent<Button>().onClick.AddListener(ClickMid);
                     //videopanels[0].panel.transform.Find("Panels").Find("mid").GetComponent<Button>().onClick.AddListener(ClickLeft);
                     //videopanels[4].panel.transform.Find("Panels").Find("mid").GetComponent<Button>().onClick.AddListener(ClickRight);
@@ -367,7 +396,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[1].mypos == pos.Mid)
             {
-
+                Debug.Log("出错1");
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, flash1, ref speed, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D, leftpanelVector, ref speed1, 0.3f);
                 videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D = flash2;
@@ -375,7 +404,7 @@ public class GetVideoData : MonoBehaviour
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D, midpanelVector, ref speed3, 0.3f);
                 HideAll(videopanels[0].videopanel);
                 GetAll(videopanels[3].videopanel);
-                if (Mathf.Abs(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f)
+                if (Mathf.Abs(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f||Mathf.Abs(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - leftpanelVector.magnitude) < 0.3f)
                 {
                     videopanels[1].mypos = pos.Left;
                     videopanels[4].mypos = pos.Mid;
@@ -399,6 +428,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[2].mypos == pos.Mid)
             {
+                Debug.Log("出错2");
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, midpanelVector, ref speed, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D, rightpanelVector, ref speed1, 0.3f);
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = flash2;
@@ -430,7 +460,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[3].mypos == pos.Mid)
             {
-
+                Debug.Log("出错4");
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, rightpanelVector, ref speed, 0.3f);
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D, flash1, ref speed1, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = flash2;
@@ -462,6 +492,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[4].mypos == pos.Mid)
             {
+                Debug.Log("出错4");
                 videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D, rightpanelVector, ref speed, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D, flash1, ref speed1, 0.3f);
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = flash2;
@@ -469,7 +500,7 @@ public class GetVideoData : MonoBehaviour
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D, leftpanelVector, ref speed3, 0.3f);
                 HideAll(videopanels[1].videopanel);
                 GetAll(videopanels[2].videopanel);
-                if (Mathf.Abs(videopanels[3].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f)
+                if (Mathf.Abs(videopanels[3].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f||Mathf.Abs(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - leftpanelVector.magnitude) < 0.3f)
                 {
                     videopanels[4].mypos = pos.Left;
                     videopanels[3].mypos = pos.Mid;
@@ -495,8 +526,10 @@ public class GetVideoData : MonoBehaviour
         }
            if (needleft)
         {
+            needright = false;
             if (videopanels[0].mypos == pos.Mid)
             {
+                Debug.Log("出错0-");
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, rightpanelVector, ref speed, 0.3f);
                 videopanels[3].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[3].panel.GetComponent<RectTransform>().anchoredPosition3D, leftpanelVector, ref speed1, 0.3f);
                 videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D, midpanelVector, ref speed2, 0.3f);
@@ -528,6 +561,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[1].mypos == pos.Mid)
             {
+                Debug.Log("出错0-");
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, midpanelVector, ref speed, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D, rightpanelVector, ref speed1, 0.3f);
                 videopanels[3].panel.GetComponent<RectTransform>().anchoredPosition3D = flash1 ;
@@ -535,7 +569,7 @@ public class GetVideoData : MonoBehaviour
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D, flash2, ref speed3, 0.3f);
                 HideAll(videopanels[4].videopanel);
                 GetAll(videopanels[2].videopanel);
-                if (Mathf.Abs(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f)
+                if (Mathf.Abs(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f||Mathf.Abs(videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - leftpanelVector.magnitude) < 0.3f)
                 {
                     videopanels[1].mypos = pos.Right;
                     videopanels[4].mypos = pos.Flash2;
@@ -559,6 +593,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[2].mypos == pos.Mid)
             {
+                Debug.Log("出错2-");
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, flash2, ref speed, 0.3f);
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D, leftpanelVector, ref speed1, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = flash1;
@@ -590,6 +625,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[3].mypos == pos.Mid)
             {
+                Debug.Log("出错3-");
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D, leftpanelVector, ref speed, 0.3f);
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D, midpanelVector, ref speed1, 0.3f);
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = flash1;
@@ -621,6 +657,7 @@ public class GetVideoData : MonoBehaviour
             }
             else if (videopanels[4].mypos == pos.Mid)
             {
+                Debug.Log("出错4-");
                 videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D, leftpanelVector, ref speed, 0.3f);
                 videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D, midpanelVector, ref speed1, 0.3f);
                 videopanels[2].panel.GetComponent<RectTransform>().anchoredPosition3D = flash1;
@@ -628,7 +665,7 @@ public class GetVideoData : MonoBehaviour
                 videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D = Vector3.SmoothDamp(videopanels[4].panel.GetComponent<RectTransform>().anchoredPosition3D, rightpanelVector, ref speed3, 0.3f);
                 HideAll(videopanels[3].videopanel);
                 GetAll(videopanels[0].videopanel);
-                if (Mathf.Abs(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f)
+                if (Mathf.Abs(videopanels[1].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - midpanelVector.magnitude) < 0.3f||Mathf.Abs(videopanels[0].panel.GetComponent<RectTransform>().anchoredPosition3D.magnitude - leftpanelVector.magnitude) < 0.3f)
                 {
                     videopanels[4].mypos = pos.Right;
                     videopanels[3].mypos = pos.Flash2;
@@ -713,25 +750,25 @@ public class GetVideoData : MonoBehaviour
     }
    public void ClickLeft()//确定点击的是左边
     {
-        Debug.Log("左移动" + index);
+       Debug.Log("点击左键事件");
       
- 
-        
+            index--;
+            needleft = true;  
+            Debug.Log("需要的标志"+needleft);
             if(HidePanel1.activeSelf == false) {
                 HidePanel1.SetActive(true);
             }
             HidePanel2.SetActive(true);   
-            index--;
-            if(index==0)
-            {
-               HidePanel1.SetActive(false);
-            }
-            needleft = true;            
+          
+                      
         
     }
   public  void ClickRight()
     {
-        Debug.Log(index + "当前页数");
+        Debug.Log("点击右键事件");
+         index++;
+                needright = true;
+                Debug.Log("右击标志"+needright);
         allroom = livingDatas.Count + videoDatas.Count;
         if (allroom % 9 == 0)
         {
@@ -741,24 +778,16 @@ public class GetVideoData : MonoBehaviour
         {
             allpage = allroom / 9 + 1;
         }
-        if (index < allpage)
-            {
+
+            
 
                 if (HidePanel2.activeInHierarchy == false)
                 {
                     HidePanel2.SetActive(true);
                 }
                 HidePanel1.SetActive(true);
-                index++;
-            if(index == allpage-1)
-            {
-              if (HidePanel2.activeSelf == true)
-                {
-                    HidePanel2.SetActive(false);
-                }
-           }
-                needright = true;
-            }
+               
+            
           
 
         
@@ -906,8 +935,24 @@ public class GetVideoData : MonoBehaviour
    
         if(index <0)
         {
-            Debug.Log("出界");
+        
             return;
+        }
+         allroom = livingDatas.Count + videoDatas.Count;
+        if (allroom % 9 == 0)
+        {
+            allpage = allroom / 9;
+        }
+        else
+        {
+            allpage = allroom / 9 + 1;
+        }
+        if(index>=allpage)
+        {
+        
+            needleft = false;
+            needright =false;
+            return ;
         }
         Destoryall(panel);
         for (int i = 0; i < ((real - index * 9) > maxView ? maxView : (real - index * 9)); i++)

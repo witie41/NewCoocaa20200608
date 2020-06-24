@@ -75,10 +75,10 @@ public class NormalPanelControl: MonoBehaviour
         else
         {
             //ControlPanel.transform.localScale = Vector3.one;
-            ControlPanel.transform.position = player.position + player.forward * 30 ;
+            ControlPanel.transform.parent.position = player.position + player.forward * 30 ;
             ControlPanel.GetComponentInChildren<PanelsControl>().CurrentPanel = null;
            // Debug.Log(player.position+""+ Panels.transform.position);
-            ControlPanel.transform.LookAt(ControlPanel.transform.position+ ControlPanel.transform.position-player.position);
+            ControlPanel.transform.parent.LookAt(ControlPanel.transform.position+ ControlPanel.transform.position-player.position);
             ControlPanel.transform.localScale = Vector3.one;
             //ChangePlayModelButton.transform.localScale = Vector3.one;
         }

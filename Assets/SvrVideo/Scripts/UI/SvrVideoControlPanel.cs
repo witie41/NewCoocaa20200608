@@ -25,6 +25,12 @@ public class SvrVideoControlPanel : MonoBehaviour
     [SerializeField]
     private SvrVolumePanel SvrVolumePanel;
 
+    //魔改
+    private Text PlayOrPause_Text;
+    void Awake()
+    {
+        PlayOrPause_Text=GameObject.Find("Pause_PlayBtn").GetComponentInChildren<Text>();
+    }
     private void OnEnable ()
     {
         PlayPBPanel.OnSeekToTime += SvrVideoPlayerDemo.SvrVideoPlayer.SeekToTime;
@@ -43,11 +49,13 @@ public class SvrVideoControlPanel : MonoBehaviour
         {
             PlayBtn.transform.localScale = Vector3.zero;
             PauseBtn.transform.localScale = Vector3.one;
+            PlayOrPause_Text.text="暂停";
         }
         else
         {
             PlayBtn.transform.localScale = Vector3.one;
             PauseBtn.transform.localScale = Vector3.zero;
+            PlayOrPause_Text.text="播放";
         }
     }
 

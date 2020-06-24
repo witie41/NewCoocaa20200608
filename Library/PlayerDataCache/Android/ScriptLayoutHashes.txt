@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-D:/unity/unity/Coocaa/NewCoocaa20200424/1.apk
+D:/1442348098/FileRecv/NewCoocaa20200424/1.apk
 SceneListBegin?
 Assets/test.unity
 SceneListEnd?

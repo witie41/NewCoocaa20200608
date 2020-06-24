@@ -1408,10 +1408,10 @@ public class Controller : MonoBehaviour
         if (GameObject.Find("Living room(Clone)") != null)
             GameObject.Find("Living room(Clone)").SetActive(false);
         if (GameObject.Find("Three hundred and sixty dergee living room") != null)
-            GameObject.Find("Three hundred and sixty dergee living room room").SetActive(false);
+            GameObject.Find("Three hundred and sixty dergee living room").SetActive(false);
 
         if (GameObject.Find("Three hundred and sixty dergee living room(Clone)") != null)
-            GameObject.Find("Three hundred and sixty dergee living room room(Clone)").SetActive(false);
+            GameObject.Find("Three hundred and sixty dergee living room(Clone)").SetActive(false);
 
         living_room = CreatLivingRoom("LivingRoom/Living room folder/Living room");
  
@@ -1427,9 +1427,9 @@ public class Controller : MonoBehaviour
         if (GameObject.Find("Living room(Clone)") != null)
             GameObject.Find("Living room(Clone)").SetActive(false);
         if (GameObject.Find("Three hundred and sixty dergee living room") != null)
-            GameObject.Find("Three hundred and sixty dergee living room room").SetActive(false);
+            GameObject.Find("Three hundred and sixty dergee living room ").SetActive(false);
         if (GameObject.Find("Three hundred and sixty dergee living room(Clone)") != null)
-            GameObject.Find("Three hundred and sixty dergee living room room(Clone)").SetActive(false);
+            GameObject.Find("Three hundred and sixty dergee living room(Clone)").SetActive(false);
         _360_living_room = CreatLivingRoom("LivingRoom/360 degree video folder/Three hundred and sixty dergee living room");
         panelComeback.Push(_360_living_room);
     }
@@ -2143,7 +2143,7 @@ public class Controller : MonoBehaviour
         GameObject target =  GameObject.FindWithTag("ButtonControl") ;  
         AllData.userId = data.id;
         AllData.UserName = data.name;
-        target.GetComponent<UserControl>().OnClick();
+        //target.GetComponent<UserControl>().OnClick();   //这句是跳转到个人信息页面的方法,但是物体丢失了,你一会找找看
     }
     public void GetFirstInfornation(FirstSelected[] datas, GameObject[] nothing, string no)//获取首页信息
     {

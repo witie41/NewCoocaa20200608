@@ -87,7 +87,7 @@ public class ControlPanelManager : MonoBehaviour
         else
         {
             //ControlPanel.transform.localScale = Vector3.one;
-            Panels.transform.parent.position = player.position + player.forward * 20;
+            Panels.transform.parent.position = player.position + player.forward * 30;
             Panels.GetComponentInChildren<PanelsControl>().CurrentPanel = null;
             // Debug.Log(player.position+""+ Panels.transform.position);
             Panels.transform.parent.LookAt(Panels.transform.position + Panels.transform.position - player.position);

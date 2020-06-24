@@ -132,6 +132,56 @@ public class VideoManager : MonoBehaviour
         //GameObject.FindGameObjectWithTag("Loading").GetComponentInChildren<Text>().text += " VideoManagerOver";
         //作者信息
         StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString+"/vr/getUserById?id="+userId.ToString(), new DataClassInterface.OnDataGet<UserData>(OnAuthorDataGet), null));
+        //推荐视频
+        StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString+"/vr/getBroadcastList?pageId=1&pageSize=5",new DataClassInterface.OnDataGet<LivingRoomData[]>(OnRoomListInfoGet),null));
+    }
+
+    void OnRoomListInfoGet(LivingRoomData[] Rooms,GameObject[] gos,string nos)
+    {
+       int num = 0;
+        for (int i = 0; i < Rooms.Length && num < 4; i++)
+        {
+            if (i > Rooms.Length)
+            {
+                break;
+            }
+            if (Rooms[i].id == Id)
+                continue;
+            RoomButtonControl temp = Content.transform.GetChild(num).GetComponent<RoomButtonControl>();
+            temp.Init2(Rooms[i].roomStatus == "1" ? VideoType.Live_On : VideoType.Live_Off, Rooms[i].id, Rooms[i].title, Rooms[i].coverImg1);
+            temp.IntoLivingRoom();
+            num++;
+        }
+        if (num < 4)
+        {
+            StartCoroutine(DataClassInterface.IEGetDate(AllData.DataString + "/vr/getVideoList?pageId=1&pageSize=5", (VideoData[] datas, GameObject[] goes, string str) =>
+            {
+                for (int i = 0; i < datas.Length && num < 4; i++)
+                {
+                    if (i > datas.Length)
+                    {
+                        break;
+                    }
+                    if (Rooms[i].id == id)
+                        continue;
+                    RoomButtonControl temp = Content.transform.GetChild(num).GetComponent<RoomButtonControl>();
+                    
+                    VideoType type = VideoType.Video2D;
+                    if (datas[i].videoType <= 2)
+                        type = VideoType.Video360;
+                    else if (datas[i].videoType <= 4)
+                        type = VideoType.Video180;
+                    else if (datas[i].videoType == 5)
+                        type = VideoType.Video3D;
+                    else
+                        type = VideoType.Video2D;
+
+                    temp.Init2(type, datas[i].workId, datas[i].title, datas[i].cover);
+                    temp.Into360Room();
+                    num++;
+                }
+            }, null));
+        } 
     }
 
     //作者信息

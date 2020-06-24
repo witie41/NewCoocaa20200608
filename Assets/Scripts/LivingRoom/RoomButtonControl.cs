@@ -29,7 +29,7 @@ public class RoomButtonControl : MonoBehaviour
     public void Init(VideoType VType, int id, string vName, string photo)
     {
 
-       // Controller controller = new Controller();
+        // Controller controller = new Controller();
         //LeftTag.gameObject.SetActive(false);
         //RightTag.gameObject.SetActive(false);
         vname = vName;
@@ -93,6 +93,60 @@ public class RoomButtonControl : MonoBehaviour
         }*/
     }
 
+    public void Init2(VideoType VType, int id, string vName, string photo)
+    {
+        LeftTag.gameObject.SetActive(false);
+        RightTag.gameObject.SetActive(false);
+        vname = vName;
+        ID = id;
+        this.VType = VType;
+        VName.text=vname;
+        StartCoroutine(DataClassInterface.IEGetSprite(photo, (Sprite sprite, GameObject gtb, string nothing) => { Photo.sprite = sprite; }, null));
+        //直播间
+        if (VType == VideoType.Live_Off || VType == VideoType.Live_On)
+        {
+            LeftTag.gameObject.SetActive(true);
+            if (VType == VideoType.Live_On)
+            {
+                LeftTag.GetComponentInChildren<Text>().text = "直播中";
+                LeftTag.GetComponent<Image>().color = OnLive;
+            }
+            if (VType == VideoType.Live_Off)
+            {
+                LeftTag.GetComponentInChildren<Text>().text = "未开播";
+                LeftTag.GetComponent<Image>().color = OffLive;
+            }
+        }
+        //视频
+        else
+        {
+            RightTag.gameObject.SetActive(true);
+            switch (VType)
+            {
+                case VideoType.Video2D:
+                RightTag.GetComponentInChildren<Text>().text = "2D";
+                RightTag.GetComponent<Image>().color = V2D;
+                    break;
+                case VideoType.Video3D:
+                RightTag.GetComponentInChildren<Text>().text = "3D";
+                RightTag.GetComponent<Image>().color = V3D;
+                    break;
+                case VideoType.Video180:
+                RightTag.GetComponentInChildren<Text>().text = "180";
+                RightTag.GetComponent<Image>().color = V180;
+                    break;
+                case VideoType.Video360:
+                RightTag.GetComponentInChildren<Text>().text = "360";
+                RightTag.GetComponent<Image>().color = V360;
+                    break;
+                default:
+                Debug.LogError("VType有错误");
+                    break;
+
+            }
+        }
+    }
+
     public RoomButtonControl(VideoType VType, int id, string vName)
     {
         vname = vName;
@@ -103,5 +157,18 @@ public class RoomButtonControl : MonoBehaviour
     public void Setphoto(string photo)
     {
         this.photo = photo;
+    }
+
+    public void IntoLivingRoom()
+    {
+        Controller cor = new Controller();
+        gameObject.GetComponent<Button>().onClick.AddListener(cor.EnterLivingRoom);
+        gameObject.GetComponent<Button>().onClick.AddListener(() => { (Controller.panelComeback.Peek() as GameObject).GetComponentInChildren<MsgManager>().CurrentId = int.Parse(name); });
+    }
+        public void Into360Room()
+    {
+        Controller cor = new Controller();
+        gameObject.GetComponent<Button>().onClick.AddListener(cor.Enter360DegreeVideos);
+        gameObject.GetComponent<Button>().onClick.AddListener(() => { (Controller.panelComeback.Peek() as GameObject).GetComponentInChildren<VideoManager>().Id = int.Parse(name); });
     }
 }
