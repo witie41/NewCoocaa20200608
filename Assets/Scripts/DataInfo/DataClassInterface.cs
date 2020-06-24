@@ -41,7 +41,21 @@ public class DataClassInterface : MonoBehaviour
             OnDataGet(JsonMapper.ToObject<T>(tempInfo.data), tbj, tempInfo.data);
         }
     }
+    public static IEnumerator IEPostData2<T>(string url, OnDataGet<string> OnDataGet, WWWForm form, GameObject[] tbj)
+    {
+        WWW www = new WWW(url, form);
+        yield return www;
+        if (www.error != null)
+        {
+            Debug.LogError("POST失败: " + www.error);
+        }
+        Info tempInfo = JsonMapper.ToObject<Info>(www.text);
+        Debug.Log("!!!!!!!!" + www.text);
 
+      
+            OnDataGet(tempInfo.msg, tbj, tempInfo.msg);
+
+    }
 
 
     //从服务器获取Sprite的接口，用法同普通数据的接口
@@ -102,19 +116,23 @@ public class DataClassInterface : MonoBehaviour
         }
     }
 
-    public static IEnumerator IEGetDate2(string url)
+    public static IEnumerator IEGetDate2<T>(string url, OnDataGet<string> OnDataGet, GameObject[] tbj)
     {
+
+
         WWW www = new WWW(url);
         yield return www;
+        yield return null;
         if (www.error != null)
         {
             Debug.LogError("数据获取失败：" + www.error);
             yield break;
         }
-
         else
         {
-            Debug.Log("出现的数据" + www.text);
+            Info t = JsonMapper.ToObject<Info>(www.text);
+
+            OnDataGet(t.msg, tbj, t.msg.ToString());
             yield break;
         }
     }

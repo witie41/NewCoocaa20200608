@@ -292,6 +292,7 @@ public class Controller : MonoBehaviour
 
             Debug.Log("账号：" + mobile_number_email + "密码：" + user_password);
             StartCoroutine(DataClassInterface.IEPostData<UserToken>(AllData.DataString + "/coocaa/api/vrLogin?mobile_email=" + mobile_number_email + "&password=" + user_password, new DataClassInterface.OnDataGet<UserToken>(GetUserToken), myForm, null));          
+            StartCoroutine(DataClassInterface.IEPostData2<string>(AllData.DataString + "/coocaa/api/vrLogin?mobile_email=" + mobile_number_email + "&password=" + user_password, new DataClassInterface.OnDataGet<string>(Msg), myForm, null));          
             //Icon_canvs.transform.GetChild(0).GetChild(5).GetChild(1).GetComponent<Text>().text = "用户";
             user_token_Get = false;
         }
@@ -310,11 +311,10 @@ public class Controller : MonoBehaviour
             myForm_1.AddField("mobile", mobile_number_email);
             myForm_1.AddField("password", user_password);
             myForm_1.AddField("captcha", SMSCode);
-
             Debug.Log("注册!");
-            Pop();
             StartCoroutine(DataClassInterface.IEPostData<UserToken>(AllData.DataString + "/coocaa/api/vrRegister", new DataClassInterface.OnDataGet<UserToken>(RegisterGetToken), myForm_1, null));
-
+            StartCoroutine(DataClassInterface.IEPostData2<string>(AllData.DataString + "/coocaa/api/vrRegister", new DataClassInterface.OnDataGet<string>(Msg), myForm_1, null));
+            Debug.Log("注册2!");
             registerAndLogin = false;
 
         }
@@ -329,7 +329,7 @@ public class Controller : MonoBehaviour
         {
             WWWForm myForm_2 = new WWWForm();
             Debug.Log("数据为：：：" + mobile_number_email + "!!!!!" + ImageCode + "!!!!" + ImageCodeKey);
-            StartCoroutine(DataClassInterface.IEGetDate2(AllData.DataString + "/coocaa/api/getCaptcha?mobile_email=" + mobile_number_email + "&capcha=" + ImageCode + "&codeKey=" + ImageCodeKey));
+            StartCoroutine(DataClassInterface.IEGetDate2<string>(AllData.DataString + "/coocaa/api/getCaptcha?mobile_email=" + mobile_number_email + "&capcha=" + ImageCode + "&codeKey=" + ImageCodeKey,new DataClassInterface.OnDataGet<string>(Msg),null));
             getmobliecode = false;
         }
 
@@ -1564,13 +1564,26 @@ public class Controller : MonoBehaviour
     }
     private void RegisterGetToken(UserToken user, GameObject[] nothing, string no)
     {
+     
         user_info = user.token;
         AllData.token = user.token;
-
+     
         StartCoroutine(DataClassInterface.IEGetDate<UserDataFind>(AllData.DataString + "/coocaa/api/getUserByToken?token=" + user.token, new DataClassInterface.OnDataGet<UserDataFind>(GetUserFromToken), null));
 
     }
-
+    private void Msg(string msg, GameObject[] nothing, string no)
+    {
+        Debug.Log("调用方法");
+        if(msg == "success")
+        {
+            DisplayMsg(msg,20);
+        }
+        else
+        {
+            Debug.Log("失败");
+                    DisplayMsg(msg,20);
+        }
+    }
     public void  Get_Mobile_Email(string value)
     {
         
@@ -1632,7 +1645,7 @@ public class Controller : MonoBehaviour
     {
         if (mobile_number_email == null)
         {
-            DisplayMsg("请输入手机号F");
+            DisplayMsg("请输入手机号",20);
             Debug.LogError("请输入手机号");
         }
         else
@@ -1651,14 +1664,14 @@ public class Controller : MonoBehaviour
             }
             else
             {
-                DisplayMsg("请输入正确的手机号");
+                DisplayMsg("请输入正确的手机号",20);
             }
         }
     }
 
     private void GetMoblieFromwww(VerificationImage data, GameObject[] go, string nothig)
     {
-        DisplayMsg("获取手机验证码");
+        DisplayMsg("获取手机验证码",20);
     }
 
     public void GetCodeF()
@@ -2143,6 +2156,7 @@ public class Controller : MonoBehaviour
         GameObject target =  GameObject.FindWithTag("ButtonControl") ;  
         AllData.userId = data.id;
         AllData.UserName = data.name;
+        Debug.Log("无错误");
         //target.GetComponent<UserControl>().OnClick();   //这句是跳转到个人信息页面的方法,但是物体丢失了,你一会找找看
     }
     public void GetFirstInfornation(FirstSelected[] datas, GameObject[] nothing, string no)//获取首页信息
@@ -2325,20 +2339,20 @@ public class Controller : MonoBehaviour
     private void OpenApp()
     {
 
-        DisplayMsg("APP下载功能正在开发");
+        //DisplayMsg("APP下载功能正在开发");
     }
     private void OpenGame()
     {
         Debug.Log("打开游戏");
-        DisplayMsg("游戏下载功能正在开发");
+        //DisplayMsg("游戏下载功能正在开发");
     }
     private void OpenWeb()
     {
         Debug.Log("打开web");
-        DisplayMsg("WEB功能正在开发");
+        //DisplayMsg("WEB功能正在开发");
     }
 
-    public void DisplayMsg(string msg)
+    public void DisplayMsg(string msg,float distance)
     {
         if(TipsRoot==null)
         {
@@ -2358,11 +2372,12 @@ public class Controller : MonoBehaviour
         {
             TempMsgPanel = Instantiate(MsgPanel, TipsRoot, false);
         }
+        TempMsgPanel.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         Text text = TempMsgPanel.transform.Find("Tip").GetComponent<Text>();
         text.text = msg;
         if (!TempMsgPanel.activeSelf)
             TempMsgPanel.SetActive(true);
-        TempMsgPanel.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 400;
+        TempMsgPanel.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distance;
         TempMsgPanel.transform.LookAt(TempMsgPanel.transform.position + TempMsgPanel.transform.position - Camera.main.transform.position);
         Destroy(TempMsgPanel, 2f);
     }
