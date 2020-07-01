@@ -38,7 +38,6 @@ public class EdgeChange : MonoBehaviour
     public void Click()
     {
         transform.parent.GetComponent<ChangeModel>().CurrentPlayer = Player;
-        transform.GetChild(0).GetComponent<EdgeChange>().Player=Player;
         transform.GetChild(0).GetComponent<Text>().text=GetComponentInChildren<Text>().text;
     }
 

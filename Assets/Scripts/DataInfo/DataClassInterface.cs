@@ -96,7 +96,6 @@ public class DataClassInterface : MonoBehaviour
         else
         {
             Info t = JsonMapper.ToObject<Info>(www.text);
-            
             if (t.msg.Equals("success"))
             {
                 if (t.data.Equals(null))

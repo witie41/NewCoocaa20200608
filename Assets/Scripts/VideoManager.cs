@@ -128,6 +128,7 @@ public class VideoManager : MonoBehaviour
         //        break;
         //}
         changemodel.CurrentPlayer = changemodel.RecommenedPlayer;
+        changemodel.transform.Find("RecommendPlayer").GetComponent<EdgeChange>().Player=changemodel.RecommenedPlayer;
         //changemodel.CurrentPlayer.GetComponent<SvrVideoPlayerDemo>().PlayVideoByIndex(0);
         //GameObject.FindGameObjectWithTag("Loading").GetComponentInChildren<Text>().text += " VideoManagerOver";
         //作者信息

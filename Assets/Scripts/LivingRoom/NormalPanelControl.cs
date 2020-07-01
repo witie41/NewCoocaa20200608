@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using Gvr;
 
 
-public class NormalPanelControl: MonoBehaviour
+public class NormalPanelControl : MonoBehaviour
 {
     private float activeTime = 0;
 
@@ -17,12 +17,12 @@ public class NormalPanelControl: MonoBehaviour
     public PanelsControl panelsControl;
 
     private Transform player;
-    
+
     //当前面板状态
     private bool currentState = true;
     private bool CurrentState
     {
-       get
+        get
         {
             return currentState;
         }
@@ -39,24 +39,24 @@ public class NormalPanelControl: MonoBehaviour
     private void Start()
     {
         player = Camera.main.transform;
-        activeTime=0;
+        activeTime = 0;
     }
 
     void Update()
     {
         //点击屏幕唤醒/隐藏菜单
-        if( GvrControllerInput.ClickButtonDown||Input.GetMouseButtonUp(0))
+        if (GvrControllerInput.ClickButtonDown || Input.GetMouseButtonUp(0))
         {
-            if(EventSystem.current.IsPointerOverGameObject() == false)
-             CurrentState = !CurrentState;
+            if (EventSystem.current.IsPointerOverGameObject() == false)
+                CurrentState = !CurrentState;
         }
-        if (currentState&&panelsControl.CurrentPanel==null)
-            activeTime+=Time.deltaTime;
+        if (currentState && panelsControl.CurrentPanel == null)
+            activeTime += Time.deltaTime;
         else
-            activeTime=0;
-        if(activeTime>=15)
+            activeTime = 0;
+        if (activeTime >= 15)
         {
-            CurrentState=false;
+            CurrentState = false;
         }
     }
 
@@ -64,7 +64,7 @@ public class NormalPanelControl: MonoBehaviour
     private void ChangePanelActive(bool value)
     {
         //面板隐藏
-        if(!value)
+        if (!value)
         {
             //ControlPanel.transform.localScale = Vector3.zero;
             ControlPanel.transform.localScale = Vector3.zero;
@@ -75,10 +75,11 @@ public class NormalPanelControl: MonoBehaviour
         else
         {
             //ControlPanel.transform.localScale = Vector3.one;
-            ControlPanel.transform.parent.position = player.position + player.forward * 30 ;
+            ControlPanel.transform.parent.position = player.position + player.forward * 40;
             ControlPanel.GetComponentInChildren<PanelsControl>().CurrentPanel = null;
-           // Debug.Log(player.position+""+ Panels.transform.position);
-            ControlPanel.transform.parent.LookAt(ControlPanel.transform.position+ ControlPanel.transform.position-player.position);
+            // Debug.Log(player.position+""+ Panels.transform.position);
+            ControlPanel.transform.parent.LookAt(ControlPanel.transform.position + ControlPanel.transform.position - player.position);
+            ControlPanel.transform.parent.position -= player.up * 10;
             ControlPanel.transform.localScale = Vector3.one;
             //ChangePlayModelButton.transform.localScale = Vector3.one;
         }

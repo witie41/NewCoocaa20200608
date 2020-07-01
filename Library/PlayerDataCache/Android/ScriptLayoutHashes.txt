@@ -166,7 +166,7 @@ df14204c8eef5efd8b1a9daa6e0a5862 Assembly-CSharp.dll:.GvrAllEventsTrigger
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:BestHTTP.Examples.AssetBundleSample
 91d87e7e79adccdfa1827c844e9d5edb Assembly-CSharp.dll:.GvrEye
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:ProBuilder2.Examples.HueCube
-2ecdbe75f54c8965e9d317f6c9a2e0e3 Assembly-CSharp.dll:.GiftButton
+6fff112b3a70f83189d6091ba9706d6b Assembly-CSharp.dll:.GiftButton
 79ad033a1a6eaf3156e7fdfff181faee Assembly-CSharp.dll:.ReportButton
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.GvrPointerManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor

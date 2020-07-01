@@ -72,6 +72,7 @@ public class ChangeModel : MonoBehaviour
                 ControlPanel.gameObject.SetActive(true);
                 //currentPlayer.GetComponent<SvrVideoPlayerDemo>().PlayVideoByIndex(0);
                 //连接ControlPanel与播放器
+                Debug.Log(currentPlayer);
                 ControlPanel.GetComponent<SvrVideoControlPanel>().SvrVideoPlayerDemo = currentPlayer.GetComponent<SvrVideoPlayerDemo>();
                 //currentPlayer.GetComponent<SvrVideoPlayerDemo>().SvrVideoControlPanel = ControlPanel.GetComponent<SvrVideoControlPanel>();
                 //重置音量和播放进度
@@ -82,7 +83,7 @@ public class ChangeModel : MonoBehaviour
                 //新建播放器
                 currentPlayer = value;
                 currentPlayer.SetActive(true);
-                Debug.Log(ControlPanel);
+                Debug.Log(currentPlayer);
                 ControlPanel.gameObject.SetActive(true);
                 //currentPlayer.GetComponent<SvrVideoPlayerDemo>().PlayVideoByIndex(0);
                 //连接ControlPanel与播放器
